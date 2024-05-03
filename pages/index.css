@@ -3,14 +3,21 @@
   color: #ffffff;
 }
 
+.page__section {
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
 .page__content {
-  margin-left: 200px;
-  margin-right: 200px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .header {
   margin-top: 45px;
-  max-width: 880px;
 }
 
 .content {
@@ -36,6 +43,7 @@
   line-height: 48px;
   font-weight: 500;
   margin: 0;
+  grid-area: title;
 }
 
 .profile__edit-button {
@@ -43,13 +51,13 @@
   width: 24px;
   height: 24px;
   grid-area: button;
+  border: 1px;
 }
 
 .profile__add-button {
   background: transparent url(../images/Add\ Button\ .svg) center no-repeat;
   width: 150px;
   height: 50px;
-  grid-area: title;
   margin-left: auto;
 }
 
@@ -57,4 +65,38 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
+  margin: 0;
+  grid-area: description;
+}
+
+.profile__image {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-position: center;
+  margin: 4px 26px 4px 22px;
+}
+
+.cards {
+  /*fonts*/
+}
+
+.card__list {
+}
+
+.card {
+  display: grid;
+}
+
+.card__image {
+  width: 282px;
+  height: 282px;
+  margin: auto;
+}
+
+.card__description {
+  display: flex;
+  background-color: #ffffff;
+  color: black;
 }
