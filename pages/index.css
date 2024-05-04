@@ -78,6 +78,10 @@
   margin: 4px 26px 4px 22px;
 }
 
+.profile__info {
+  display: flex;
+}
+
 .cards {
   /*fonts*/
 }
@@ -121,4 +125,26 @@
   width: 21px;
   height: 18px;
   border-style: none;
+}
+
+@media screen and (max-width: 480px) {
+  .profile {
+    flex-direction: column;
+  }
+
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile__description {
+    width: 100%;
+    text-align: center;
+  }
+  .profile__add-button {
+    margin: 0;
+    width: 100%;
+  }
 }
