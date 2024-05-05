@@ -52,6 +52,7 @@
   height: 24px;
   grid-area: button;
   border: 1px;
+  padding: 25px 10px;
 }
 
 .profile__add-button {
