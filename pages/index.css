@@ -79,10 +79,6 @@
   margin: 4px 26px 4px 22px;
 }
 
-.profile__info {
-  display: flex;
-}
-
 .cards {
   /*fonts*/
 }
@@ -99,7 +95,6 @@
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 282px);
   grid-gap: 20px 17px;
-  margin: 0;
   padding: 0;
 }
 
@@ -128,24 +123,35 @@
   border-style: none;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1280px) {
   .profile {
     flex-direction: column;
+    overflow: hidden;
   }
 
   .profile__info {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
+    margin: 0 20px;
+    max-width: calc(100%-40px);
   }
 
   .profile__description {
     width: 100%;
+    margin: 0 20px;
     text-align: center;
   }
   .profile__add-button {
     margin: 0;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card__description {
+    background-color: red;
+    display: flex;
+    align-items: center;
+  }
+
+  .card__iamge {
   }
 }
