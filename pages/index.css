@@ -17,7 +17,7 @@
 }
 
 .header {
-  margin: 0;
+  margin-top: 45px;
 }
 
 .content {
@@ -149,7 +149,7 @@
   .card__description {
     background-color: red;
     display: flex;
-    align-self: center;
+    align-items: center;
   }
 
   .card__iamge {
