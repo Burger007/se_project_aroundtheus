@@ -126,7 +126,6 @@
 @media screen and (max-width: 1280px) {
   .profile {
     flex-direction: column;
-    overflow: hidden;
   }
 
   .profile__info {
