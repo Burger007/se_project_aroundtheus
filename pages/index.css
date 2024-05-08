@@ -100,8 +100,14 @@
 
 .card__image {
   width: 282px;
-  height: 282px;
+  height: 361px;
   border-radius: 10px;
+}
+
+.card__title {
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 .card__description {
@@ -111,11 +117,9 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
-  padding: 25px 20px;
-  align-items: center;
-  justify-content: space-between;
+  padding: 50px;
 
-  text-overflow: ellipsis;
+  justify-content: space-between;
 }
 
 .card__like-button {
@@ -125,13 +129,17 @@
   border-style: none;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 800px) {
   .profile {
     flex-direction: column;
   }
 
   .profile__info {
     margin: 0 20px;
+  }
+
+  .profile {
+    text-align: center;
   }
 
   .profile__description {
@@ -145,7 +153,17 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+.footer {
+  margin: 0;
+}
+
+.footer__copyright {
+  padding-bottom: 1139px;
+  padding-left: 200px;
+  padding-top: 60px;
+}
+
+@media screen and (max-width: 620px) {
   .card__description {
     background-color: red;
     display: flex;
