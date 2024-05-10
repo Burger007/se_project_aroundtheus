@@ -129,6 +129,17 @@
   border-style: none;
 }
 
+.footer {
+  margin: 0;
+  padding-bottom: 1139px;
+  padding-left: 200px;
+  padding-bottom: 60px;
+}
+
+.footer__copyright {
+  margin-left: 25px;
+}
+
 @media screen and (max-width: 800px) {
   .profile {
     flex-direction: column;
@@ -151,16 +162,6 @@
     margin: 0;
     width: 100%;
   }
-}
-
-.footer {
-  margin: 0;
-}
-
-.footer__copyright {
-  padding-bottom: 1139px;
-  padding-left: 200px;
-  padding-top: 60px;
 }
 
 @media screen and (max-width: 620px) {
