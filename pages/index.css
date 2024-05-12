@@ -6,7 +6,7 @@
 .page__section {
   max-width: 880px;
   width: 100%;
-  position: relative;
+
   margin: 0 auto;
 }
 
@@ -14,10 +14,13 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding: 0 20px;
 }
 
 .header {
   margin-top: 45px;
+  display: flex;
+  align-items: stretch;
 }
 
 .content {
@@ -43,6 +46,7 @@
   line-height: 48px;
   font-weight: 500;
   margin: 0;
+
   grid-area: title;
 }
 
@@ -105,11 +109,9 @@
 }
 
 .card__title {
-  margin: 0 auto;
-
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100px;
+  margin: 0;
+  padding: 0;
+  width: 193px;
   height: 29px;
 }
 
@@ -120,8 +122,8 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
+  padding: 0 25px;
   padding: 50px;
-
   justify-content: space-between;
 }
 
@@ -133,10 +135,20 @@
 }
 
 .footer {
-  margin: 50 25px 25px;
+  font-family: Inter;
+  width: 318px;
+  height: 18px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  color: #545454;
+  margin: 50px auto;
 }
 
 .footer__copyright {
+  width: 318px;
+  height: 18px;
+  color: #545454;
 }
 
 @media screen and (max-width: 800px) {
@@ -146,6 +158,7 @@
 
   .profile__info {
     margin: 0 20px;
+    background-color: green;
   }
 
   .profile {
@@ -161,19 +174,20 @@
     margin: 0;
     width: 100%;
   }
-
-  .page__content {
-    padding: 0 20px;
-  }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 620px) {
   .card__description {
     background-color: red;
     display: flex;
-    align-items: center;
+    align-items: ;
+  }
+
+  .header {
+    display: flex;
   }
 
   .card__iamge {
+    margin: 0 20px;
   }
 }
