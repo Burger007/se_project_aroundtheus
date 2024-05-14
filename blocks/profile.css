@@ -14,12 +14,12 @@
 }
 
 .profile__title {
-  font-size: 42px;
+  font-size: 40px;
   line-height: 48px;
   font-weight: 500;
   margin: 0;
   grid-area: title;
-  font-family: Inter-regular;
+  font-family: Inter;
 }
 
 .profile__edit-button {
