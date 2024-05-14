@@ -1,6 +1,11 @@
 .page {
   background-color: black;
   color: #ffffff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./fonts/Inter-Black.woff2) format("woff2");
 }
 
 .page__section {
