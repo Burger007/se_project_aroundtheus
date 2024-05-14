@@ -27,7 +27,8 @@
   margin: 0;
   padding: 0;
   height: 29px;
-  font-family: ;
+  font-family: "Inter";
+  font-style: normal;
 }
 
 .card__description {
