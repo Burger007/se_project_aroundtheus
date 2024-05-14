@@ -19,6 +19,7 @@
   font-weight: 500;
   margin: 0;
   grid-area: title;
+  font-family: Inter-regular;
 }
 
 .profile__edit-button {
@@ -43,6 +44,7 @@
   line-height: 22px;
   margin: 0;
   grid-area: description;
+  font-family: Inter-regular;
 }
 
 .profile__image {
