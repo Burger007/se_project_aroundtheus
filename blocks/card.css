@@ -19,18 +19,19 @@
 
 .card__image {
   width: 282px;
-  height: 361px;
+  height: 282px;
   border-radius: 10px;
 }
 
 .card__title {
   margin: 0;
   padding: 0;
-  height: 29px;
+  line-height: 29px;
   font-family: "Inter";
   font-style: normal;
   white-space: nowrap;
-  text-overflow: unset;
+  font-weight: 900;
+  font-size: 24px;
 }
 
 .card__description {
@@ -41,7 +42,7 @@
   font-size: 24px;
   line-height: 29px;
 
-  padding: 50px 25px;
+  padding: 25px 20px;
   justify-content: space-between;
 }
 
