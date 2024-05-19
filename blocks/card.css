@@ -47,3 +47,18 @@
   height: 18px;
   border-style: none;
 }
+
+@media screen and (max-width: 620px) {
+  .card__description {
+    background-color: red;
+    display: flex;
+  }
+
+  .header {
+    display: flex;
+  }
+
+  .card__iamge {
+    margin: 0 20px;
+  }
+}
