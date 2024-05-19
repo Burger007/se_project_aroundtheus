@@ -2,10 +2,12 @@
   width: 100%;
   height: 18px;
   font-size: 18px;
-  line-height: 21.78px;
   color: #545454;
   margin: 50px auto;
-  font-family: Inter-regular;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
 }
 
 .footer__copyright {
