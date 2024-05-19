@@ -79,11 +79,6 @@
     margin: 0 20px;
     background-color: green;
     display: grid;
-    align-items: stretch;
-  }
-
-  .profile {
-    text-align: center;
   }
 
   .profile__description {
