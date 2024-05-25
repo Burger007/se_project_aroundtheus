@@ -11,6 +11,7 @@
   grid-template-columns: repeat(auto-fit, 282px);
   grid-gap: 20px 17px;
   padding: 0;
+  margin: 0;
 }
 
 .card__image {
@@ -23,9 +24,8 @@
   margin: 0;
   padding: 0;
   line-height: 29px;
-  font-family: "Inter";
+  font-family: "Inter", Arial, sans-serif;
   font-style: normal;
-  font-weight: 900;
   font-size: 24px;
 }
 
@@ -56,11 +56,6 @@
 
 @media screen and (max-width: 620px) {
   .card__description {
-    background-color: red;
-    display: flex;
-  }
-
-  .header {
     display: flex;
   }
 
