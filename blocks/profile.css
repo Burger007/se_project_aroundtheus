@@ -88,7 +88,7 @@
     font-weight: 400;
     line-height: 17px;
     text-align: center;
-    padding: 19px 0;
+    padding: 20px 19px 0;
   }
 
   .profile__title {
@@ -102,10 +102,7 @@
   .profile__add-button {
     margin: 0;
     display: grid;
-    width: 282px;
-  }
-
-  .profile__add-button {
-    display: flex;
+    width: 100%;
+    padding: 0 20px 20px;
   }
 }
