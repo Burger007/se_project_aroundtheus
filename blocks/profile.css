@@ -12,6 +12,9 @@
   grid-template-columns: minmax(auto, 373px) auto;
   grid-gap: 10px;
   padding: 0 0 0 24px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__title {
