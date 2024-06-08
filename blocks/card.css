@@ -47,6 +47,6 @@
 
 @media screen and (max-width: 620px) {
   .card__image {
-    margin: 20px 0 0;
+    margin: 10px 0 0;
   }
 }
