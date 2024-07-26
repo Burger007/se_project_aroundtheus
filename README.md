@@ -9,6 +9,7 @@
 
 ![Untitled](https://github.com/Burger007/se_project_aroundtheus/assets/72559320/dc61da3b-8b47-46bd-854f-89481989f2f2)
 
+another tool we use, is  Figma. Figma is a tool which we the designer applies his design and our job is to implement the margins, paddings, etc accrodingly to the design. It is crucial to negotiate, with the designer, what are the most appropriate spaces to apply so that the project would be effcient and with less errors as possible.   
 
   
 https://github.com/Burger007/se_project_aroundtheus.git
