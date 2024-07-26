@@ -10,19 +10,10 @@
 ![Untitled](https://github.com/Burger007/se_project_aroundtheus/assets/72559320/dc61da3b-8b47-46bd-854f-89481989f2f2)
 
 
+  
+https://github.com/Burger007/se_project_aroundtheus.git
+  
 
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
-  
-**Images**  
   
 
   
