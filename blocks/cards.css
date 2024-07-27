@@ -17,7 +17,6 @@
 
 @media screen and (max-width: 620px) {
   .cards__list {
-    display: grid;
     grid-gap: 10px;
   }
 }
