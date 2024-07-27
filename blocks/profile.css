@@ -9,9 +9,10 @@
   grid-template-areas:
     "title button"
     "description description";
-  grid-template-columns: minmax(auto, 373px) auto;
+  grid-template-columns: minmax(auto, 373px) 24px;
   grid-gap: 10px;
   padding: 0 0 0 24px;
+  align-items: center;
 }
 
 .profile__title {
@@ -27,12 +28,15 @@
 }
 
 .profile__edit-button {
+  display: flex;
+  align-self: center;
+  justify-self: end;
   background: transparent url(../images/edit-button.svg) center no-repeat;
   width: 24px;
   height: 24px;
   grid-area: button;
   border: 1px solid white;
-  padding: 10px 0 10px;
+  padding: 10px;
   transition: opacity 0.6s ease-in-out;
 }
 
@@ -80,9 +84,7 @@
 
 @media screen and (max-width: 620px) {
   .profile {
-    display: flex;
     flex-direction: column;
-    align-items: center;
   }
 
   .profile__image {
@@ -91,7 +93,7 @@
   }
 
   .profile__info {
-    padding: 0 0 20px;
+    padding: 0 0 10px;
   }
 
   .profile__description {
@@ -104,8 +106,9 @@
 
   .profile__title {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 2px;
+    gap: 5px;
     font-size: 22px;
     font-weight: 500;
     line-height: 26.63px;
@@ -113,14 +116,14 @@
   }
 
   .profile__add-button {
+    margin: 0;
     width: 100%;
-    margin: 0 20px 10px;
+    margin: 0 20px 20px;
   }
   .profile__edit-button {
     width: 18px;
     height: 18px;
     margin: 0;
-    padding: 0;
   }
   .logo__title {
     width: 126px;
