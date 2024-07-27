@@ -38,6 +38,7 @@
   border: 1px solid white;
   padding: 10px;
   transition: opacity 0.6s ease-in-out;
+  margin-right: 10px;
 }
 
 .profile__edit-button:hover {
@@ -122,6 +123,6 @@
   .profile__edit-button {
     width: 18px;
     height: 18px;
-    margin-right: 25px;
+    margin-right: 20px;
   }
 }
