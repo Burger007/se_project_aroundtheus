@@ -30,7 +30,6 @@
 .profile__edit-button {
   display: flex;
   align-self: center;
-  justify-self: end;
   background: transparent url(../images/edit-button.svg) center no-repeat;
   width: 24px;
   height: 24px;
