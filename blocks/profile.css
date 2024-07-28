@@ -101,11 +101,10 @@
 
   .profile__info {
     padding: 0 0 10px;
-    grid-template-columns: minmax(auto, fr1) 24px;
   }
 
   .profile__description {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     width: 100%;
     font-size: 14px;
     font-weight: 400;
@@ -123,7 +122,7 @@
 
   .profile__add-button {
     width: 100%;
-    gap: 15px;
+    gap: 5px;
   }
   .profile__edit-button {
     width: 18px;
