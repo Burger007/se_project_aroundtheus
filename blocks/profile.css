@@ -13,6 +13,10 @@
   grid-gap: 10px;
   padding: 0 0 0 24px;
   align-items: center;
+  font-family: "Inter", Arial, sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__title {
@@ -84,7 +88,7 @@
   margin: 25px 0;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 720px) {
   .profile {
     flex-direction: column;
     margin-bottom: 20px;
@@ -97,6 +101,7 @@
 
   .profile__info {
     padding: 0 0 10px;
+    grid-template-columns: minmax(auto, fr1) 24px;
   }
 
   .profile__description {
