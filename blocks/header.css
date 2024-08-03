@@ -6,3 +6,9 @@
   padding-bottom: 10px;
   color: rgb (84, 84, 84, 0.7);
 }
+@media screen and (max-width: 720px) {
+  .header .page__section {
+    width: 126px;
+    height: 24px;
+  }
+}
