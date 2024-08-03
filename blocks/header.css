@@ -1,7 +1,8 @@
 .header {
   margin-top: 45px;
+  margin-bottom: ;
   display: flex;
   align-items: stretch;
   padding-bottom: 10px;
-  background-color: (84, 84, 84, 0.7);
+  color: rgb (84, 84, 84, 0.7);
 }
