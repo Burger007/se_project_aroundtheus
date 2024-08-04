@@ -1,12 +1,6 @@
-.page_logo {
-  width: 120px;
-  height: 120px;
-}
 .profile {
   display: flex;
-
   align-items: center;
-
   padding-top: 40px;
 }
 
@@ -102,6 +96,7 @@
   }
 
   .profile__title {
+    max-width: 222px;
     gap: 5px;
     font-size: 22px;
     font-weight: 500;
@@ -126,9 +121,6 @@
     line-height: 17px;
     text-align: center;
     gap: 5px;
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 26.63px;
     text-align: center;
   }
 
