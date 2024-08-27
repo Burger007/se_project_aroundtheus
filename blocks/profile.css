@@ -107,7 +107,11 @@
   .profile__image {
     width: 120px;
     height: 120px;
+<<<<<<< HEAD
     margin-top: 0;
+=======
+    maring:0;
+>>>>>>> 90de2f0194f6811a166853ed8899a63a4411aec4
   }
 
   .profile__info {
