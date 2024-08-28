@@ -7,18 +7,8 @@
   border-bottom: solid 1px rgb(84 84 84 / 0.7);
 }
 @media screen and (max-width: 720px) {
-<<<<<<< HEAD
   .header {
     margin-top: 28px;
-=======
-  .header{
-     margin-top: 28px;
-  }
-  
-  .header__logo {
-    width: 126px;
-    height: 24px;
->>>>>>> 90de2f0194f6811a166853ed8899a63a4411aec4
   }
 }
 .header__logo {
