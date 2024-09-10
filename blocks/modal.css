@@ -1,0 +1,14 @@
+.modal {
+  /* display: none; */
+  position: fixed;
+  background-color: aqua;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.modal__container {
+  background-color: #fff;
+}
