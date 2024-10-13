@@ -81,9 +81,6 @@
 }
 
 @media screen and (max-width: 720px) {
-  .moda {
-    position: relative;
-  }
   .modal__container {
     flex-direction: column;
     max-width: 282px;
@@ -101,7 +98,7 @@
   }
   .modal__close {
     position: absolute;
-    top: -20px;
-    right: 20px;
+    top: -50px;
+    right: 5px;
   }
 }
