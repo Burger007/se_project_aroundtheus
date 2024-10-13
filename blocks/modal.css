@@ -80,14 +80,20 @@
   background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 720px) {
-  .modal__container {
+@media screen and (max-width: 320px) {
+  .modal {
+    display: flex;
     flex-direction: column;
     max-width: 282px;
   }
 
+  .modal__container {
+    flex-direction: column;
+    width: 282px;
+    height: 323px;
+  }
+
   .modal__button {
-    max-width: 238px;
     width: 100%;
     height: 46px;
     margin: 0 auto;
