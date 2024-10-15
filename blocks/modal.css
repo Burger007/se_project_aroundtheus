@@ -81,31 +81,31 @@
 }
 
 @media screen and (max-width: 320px) {
-  .modal {
+  .modal__container {
     width: 100%;
+    height: 322px;
+    max-width: 282px;
+    padding: 45px 30px;
+    box-sizing: border-box;
   }
 
-  .modal__container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 282px;
-    height: 322px;
-
-    padding: 25px 25px;
+  .modal__heading {
+    padding: 19px 0 19px;
   }
 
   .modal__button {
     width: 100%;
+    box-sizing: border-box;
   }
 
   .popup__input {
-    max-width: 282px;
+    width: 100%;
   }
   .modal__close {
+    width: 26px;
+    height: 26px;
     position: absolute;
-    top: -50px;
-    right: 5px;
-    padding: 0 19px;
+    top: 10px;
+    right: 10px;
   }
 }
