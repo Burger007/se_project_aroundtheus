@@ -7,7 +7,7 @@
   bottom: 0;
   z-index: 1;
   display: flex;
-  padding: 0 25px;
+  padding: 0 19px;
 }
 
 .modal__container {
@@ -82,21 +82,21 @@
 
 @media screen and (max-width: 320px) {
   .modal {
-    display: flex;
-    flex-direction: column;
-    max-width: 282px;
+    width: 100%;
   }
 
   .modal__container {
+    display: flex;
     flex-direction: column;
-    width: 282px;
-    height: 323px;
+    width: 100%;
+    max-width: 282px;
+    height: 322px;
+
+    padding: 25px 25px;
   }
 
   .modal__button {
     width: 100%;
-    height: 46px;
-    margin: 0 auto;
   }
 
   .popup__input {
@@ -106,5 +106,6 @@
     position: absolute;
     top: -50px;
     right: 5px;
+    padding: 0 19px;
   }
 }
