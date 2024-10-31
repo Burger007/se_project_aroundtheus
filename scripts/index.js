@@ -50,13 +50,16 @@ closeButton.addEventListener("click", () => {
 });
 
 const profileFormElement = document.querySelector(".modal__form");
+
 const nameInput = document.querySelector("#profile-title-input");
-const jobInput = document.querySelector(".profile__description");
+const jobInput = document.querySelector("#profile-description-input");
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  console.log(nameInput.value, jobInput.value); // Check input values
+
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-  profileEditModal.classList.remove("modal_opened");
+
+  profileEditModal.classList.remove("modal__opened");
 }
+profileFormElement.addEventListener("submit", handleProfileFormSubmit);
