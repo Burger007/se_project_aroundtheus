@@ -104,7 +104,7 @@
     box-sizing: border-box;
   }
 
-  .popup__input {
+  .modal__input {
     width: 100%;
   }
   .modal__close {
