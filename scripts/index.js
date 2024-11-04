@@ -59,12 +59,12 @@ function getCardElement(cardData) {
   // access the card title and image and store them in variables
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
-
+  cardImageEl.src = cardData.link;
   //set the paths to the image to the link field of the object
   //set the image alt text to the name field of the object, too
   cardTitleEl.textContent = cardData.name;
-  // return the ready HTML element with the filled-in data
-  //return cardElement;
+
+  return cardElement;
 }
 
 //Profile Element
