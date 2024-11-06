@@ -7,7 +7,6 @@ const initialCards = [
     name: "Lake Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
   },
-
   {
     name: "Bald Mountains",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
@@ -16,12 +15,10 @@ const initialCards = [
     name: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
-
   {
     name: "Vanoise National Park",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   },
-
   {
     name: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
@@ -46,11 +43,12 @@ const profileDescriptionInput = document.querySelector(
 profileEditButton.addEventListener("click", () => {
   profileTitileInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  profileEditModal.classList.add("modal__opened");
+
+  profileEditModal.classList.add("modal_opened");
 });
 
 closeButton.addEventListener("click", () => {
-  profileEditModal.classList.remove("modal__opened");
+  profileEditModal.classList.remove("modal_opened");
 });
 
 function getCardElement(cardData) {
@@ -60,17 +58,14 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   cardImageEl.src = cardData.link;
-  //set the paths to the image to the link field of the object
-  //set the image alt text to the name field of the object, too
+  cardImageEl.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
-
   return cardElement;
 }
 
 //Profile Element
 const profileFormElement = document.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
-
 //Tempalte Element
 
 const nameInput = document.querySelector("#profile-title-input");
@@ -79,12 +74,12 @@ const jobInput = document.querySelector("#profile-description-input");
 //Event Handler
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
 
   profileEditModal.classList.remove("modal__opened");
 }
+
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 initialCards.forEach((cardData) => {
