@@ -47,9 +47,9 @@ profileEditButton.addEventListener("click", () => {
   profileEditModal.classList.add("modal_opened");
 });
 
-closeButton.addEventListener("click", () => {
+function closeProfileModal() {
   profileEditModal.classList.remove("modal_opened");
-});
+}
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -75,7 +75,9 @@ function handleProfileFormSubmit(evt) {
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
 
-  closeProfileModal.classList.remove("modal_opened");
+  function closeProfileModal() {
+    profileEditModal.classList.remove("modal_opened");
+  }
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
