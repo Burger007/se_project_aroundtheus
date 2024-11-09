@@ -52,9 +52,7 @@ closeButton.addEventListener("click", () => {
 });
 
 function getCardElement(cardData) {
-  //clone the template element with all its content and store it in a cardElement variable
   const cardElement = cardTemplate.cloneNode(true);
-  // access the card title and image and store them in variables
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   cardImageEl.src = cardData.link;
@@ -77,7 +75,7 @@ function handleProfileFormSubmit(evt) {
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
 
-  profileEditModal.classList.remove("modal__opened");
+  closeProfileModal.classList.remove("modal_opened");
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
