@@ -74,12 +74,10 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-
-  function closeProfileModal() {
-    profileEditModal.classList.remove("modal_opened");
-  }
 }
-
+function closeProfileModal() {
+  profileEditModal.classList.remove("modal_opened");
+}
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 initialCards.forEach((cardData) => {
