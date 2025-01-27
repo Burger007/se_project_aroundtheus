@@ -34,6 +34,7 @@ const closeButton = document.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitileInput = document.querySelector("#profile-title-input");
+const profileAddCard = document.querySelector("#add-card-modal");
 
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
@@ -85,3 +86,5 @@ initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 });
+
+profileAddCard.addEventListener('click', () =>)
