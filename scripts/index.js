@@ -37,8 +37,6 @@ const profileTitileInput = document.querySelector("#profile-title-input");
 
 const cardAddPopup = document.querySelector("#add-popup");
 const modalAddButton = document.querySelector("#add-button");
-const formCloseButton = document.querySelector(".form_type_close");
-const cardFormModal = document.querySelector(".modal__form_card");
 
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
@@ -52,8 +50,8 @@ profileEditButton.addEventListener("click", () => {
   profileEditModal.classList.add("modal_opened");
 });
 
-cardAddPopup.addEventListener("click", () => {
-  profileEditModal.classList.add("modal_opened");
+modalAddButton.addEventListener("click", () => {
+  cardAddPopup.classList.add("modal_opened");
 });
 
 function closeProfileModal() {
