@@ -9,11 +9,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  display: ;
+  display: none;
 }
 
 .modal__container {
-  background-color: #000000;
+  background-color: #ffffff;
   padding: 34px 36px;
   border-radius: 10px;
   position: relative;

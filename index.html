@@ -73,28 +73,26 @@
       </div>
     </div>
     <!--Form Card-->
-    <div class="modal__form_card">
+    <div class="modal" id="add-popup">
       <div class="modal__container">
-        <button
-          class="modal__close-button"
-          id="add-card-modal"
-          type="button"
-        ></button>
-        <h2 class="modal__heading_form">New Place</h2>
+        <button class="modal__close" type="button"></button>
+        <h2 class="modal__heading">New Place</h2>
         <form class="modal__form">
           <input
             type="text"
             name="title"
-            class="form__input_type_title"
-            placeholder="Title"
+            id="form-title-input"
+            class="modal__input"
+            placeholder="Your Name"
           />
           <input
-            type="URL"
-            name="Image"
-            class="form__input_type_url"
-            placeholder="Image URL"
+            type="Url"
+            name="image"
+            id="form-image-input"
+            class="modal__input"
+            placeholder="Image Url"
           />
-          <button class="form_type_close" id="close-button" type="button">
+          <button class="profile__add-button" id="add-button" type="button">
             Create
           </button>
         </form>
