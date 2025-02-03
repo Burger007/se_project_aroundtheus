@@ -38,6 +38,8 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const cardAddPopup = document.querySelector("#add-popup");
 const modalAddButton = document.querySelector(".profile__add-button");
 
+const cardAddCloseButton = document.querySelector("#card-add-close-button");
+
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
@@ -64,6 +66,10 @@ modalAddButton.addEventListener("click", () => {
 function closeProfileModal() {
   closeModal(profileEditModal);
 }
+
+cardAddCloseButton.addEventListener("click", () => {
+  closeModal(cardAddPopup);
+});
 
 closeButton.addEventListener("click", closeProfileModal);
 
