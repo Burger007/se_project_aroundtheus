@@ -33,7 +33,7 @@ const profileEditModal = document.querySelector("#profile-edit-modal");
 const closeButton = document.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
-const profileTitileInput = document.querySelector("#profile-title-input");
+const profileTitleInput = document.querySelector("#profile-title-input");
 
 const cardAddPopup = document.querySelector("#add-popup");
 const modalAddButton = document.querySelector(".profile__add-button");
@@ -42,20 +42,27 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 
-//Fucntions For Title and descirption will stay in Modal
-profileEditButton.addEventListener("click", () => {
-  profileTitileInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+}
 
-  profileEditModal.classList.add("modal_opened");
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+}
+
+// Use the functions to open modals
+profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  openModal(profileEditModal);
 });
 
 modalAddButton.addEventListener("click", () => {
-  cardAddPopup.classList.add("modal_opened");
+  openModal(cardAddPopup);
 });
 
 function closeProfileModal() {
-  profileEditModal.classList.remove("modal_opened");
+  closeModal(profileEditModal);
 }
 
 closeButton.addEventListener("click", closeProfileModal);
