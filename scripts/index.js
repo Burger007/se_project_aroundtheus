@@ -96,7 +96,13 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-  closeProfileModal();
+  closeProfileModal(profileEditButton);
+}
+
+function handlAddCardFormSubmit(evt) {
+  evt.preventDefault();
+  const cardElement = getCardElement();
+  closeProfileModal(modalAddButton);
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
