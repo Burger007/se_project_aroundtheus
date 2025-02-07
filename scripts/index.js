@@ -44,6 +44,17 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 
+const saveAddButton = document.querySelector("#add-button");
+
+const profileFormElement = profileEditButton.querySelector(".modal__form");
+const addCardFromElement = modalAddButton.querySelector(".modal__form");
+const cardListEl = document.querySelector(".cards__list");
+
+const cardTitleInput = profileFormElement.querySelector(
+  ".modal__input-type-title"
+);
+const cardUrlInput = document.querySelector(".modal__input-type-url");
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
 }
@@ -84,12 +95,8 @@ function getCardElement(cardData) {
 }
 
 //Profile Element
-const profileFormElement = document.querySelector(".modal__form");
-const cardListEl = document.querySelector(".cards__list");
-//Tempalte Element
 
-const nameInput = document.querySelector("#profile-title-input");
-const jobInput = document.querySelector("#profile-description-input");
+//Tempalte Element
 
 //Event Handler
 function handleProfileFormSubmit(evt) {
