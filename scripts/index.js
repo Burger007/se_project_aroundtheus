@@ -44,16 +44,17 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 
+const nameInput = document.querySelector("#profile-title-input");
+const jobInput = document.querySelector("#profile-description-input");
+
 const saveAddButton = document.querySelector("#add-button");
 
-const profileFormElement = profileEditButton.querySelector(".modal__form");
-const addCardFromElement = modalAddButton.querySelector(".modal__form");
+const profileFormElement = profileEditModal.querySelector(".modal__form");
+const addCardFormElement = cardAddPopup.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
 
-const cardTitleInput = profileFormElement.querySelector(
-  ".modal__input-type-title"
-);
-const cardUrlInput = document.querySelector(".modal__input-type-url");
+const cardTitleInput = cardAddPopup.querySelector(".modal__input-type-title");
+const cardUrlInput = cardAddPopup.querySelector(".modal__input-type-url");
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -94,10 +95,6 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-//Profile Element
-
-//Tempalte Element
-
 //Event Handler
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -108,8 +105,10 @@ function handleProfileFormSubmit(evt) {
 
 function handlAddCardFormSubmit(evt) {
   evt.preventDefault();
-  const cardElement = getCardElement();
-  closeProfileModal(modalAddButton);
+  const titleValue = cardTitleInput.value;
+  const urlVlaue = cardUrlInput.value;
+  console.log("titleValue", titleValue);
+  return console.log("UrlValue", urlVlaue);
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
