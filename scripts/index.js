@@ -89,6 +89,7 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
+
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
@@ -103,15 +104,24 @@ function handleProfileFormSubmit(evt) {
   closeProfileModal(profileEditButton);
 }
 
+//Form Listner
 function handlAddCardFormSubmit(evt) {
   evt.preventDefault();
-  const titleValue = cardTitleInput.value;
-  const urlVlaue = cardUrlInput.value;
-  console.log("titleValue", titleValue);
-  return console.log("UrlValue", urlVlaue);
+  const name = cardTitleInput.value;
+  const link = cardUrlInput.value;
+  const cardElement = getCardElement({
+    name,
+    link,
+  });
+
+  closeProfileModal(addCardFormElement);
 }
 
+//edit profile listiner
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+
+//Form listner
+addCardFormElement.addEventListener("submit", handlAddCardFormSubmit);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
