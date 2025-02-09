@@ -115,7 +115,7 @@ function handlAddCardFormSubmit(evt) {
   const link = cardUrlInput.value;
   renderCard({ name, link });
 
-  closeProfileModal(cardAddPopup);
+  closeModal(cardAddPopup);
 }
 
 //edit profile listiner
