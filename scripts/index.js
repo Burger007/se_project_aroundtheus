@@ -89,6 +89,18 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
+  const likeBtutton = cardElement.querySelector(".card__like-button");
+
+  //Find the delete button
+  //Add the eventlistener to the elete button
+  //cardElement.remove();
+
+  //add click lisinter to the cardEmange element
+  //open modal with previewImageModal
+
+  likeBtutton.addEventListener("click", () => {
+    likeBtutton.classList.toggle("card__like-button_active");
+  });
 
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
