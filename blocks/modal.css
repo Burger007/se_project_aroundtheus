@@ -118,6 +118,9 @@
 }
 
 .popup__container {
+  position: relative;
+  max-width: 75vw;
+  max-height: 75vh;
 }
 
 .popup__image {
@@ -125,23 +128,25 @@
   height: auto;
   display: block;
   border-radius: 10px;
-  max-width: 75vw;
-  max-height: 75vh;
-  object-fit: contain;
 }
 
 .popup__caption {
   margin-top: 10px;
   color: white;
-  text-align: start;
+  text-align: center;
 }
 
 .popup__close-button {
   position: absolute;
-  top: 10px; /* Adjust these to better realign the button */
-  right: 10px;
-  z-index: 101; /* Ensure it's above the image */
+  top: -10px;
+  right: -10px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
   background-image: url("../images/Close Icon.svg");
+  z-index: -1;
 }
 
 @media screen and (max-width: 600px) {
