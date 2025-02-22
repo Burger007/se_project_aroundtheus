@@ -56,6 +56,11 @@ const cardListEl = document.querySelector(".cards__list");
 const cardTitleInput = cardAddPopup.querySelector("#form-title-input");
 const cardUrlInput = cardAddPopup.querySelector("#form-image-input");
 
+const popup = document.querySelector(".popup_type_image");
+const popupImage = popup.querySelector(".popup__image");
+const popupCaption = popup.querySelector(".popup__caption");
+const closePopButton = popup.querySelector(".popup__close-button");
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
 }
@@ -92,15 +97,19 @@ function getCardElement(cardData) {
   const likeBtutton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");
 
-  //Find the delete button
-  //Add the eventlistener to the elete button
-  //cardElement.remove();
-
   //add click lisinter to the cardEmange element
   //open modal with previewImageModal
 
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
+
   likeBtutton.addEventListener("click", () => {
     likeBtutton.classList.toggle("card__like-button_active");
+  });
+
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
   });
 
   cardImageEl.src = cardData.link;
@@ -142,3 +151,32 @@ initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 });
+
+const cardImages = document.querySelectorAll(".card__image");
+cardImages.forEach((image) => {
+  image.addEventListener("click", () => {
+    const imageSrc = image.src;
+    const caption = image.alt;
+    openImageModal(imageSrc, caption);
+  });
+});
+
+//Card Image Popup
+function openImageModal(imageSrc, caption) {
+  const popup = document.querySelector(".popup_type_image");
+  const popupImage = popup.querySelector(".popup__image");
+  const popupCaption = popup.querySelector(".popup__caption");
+
+  popupImage.src = imageSrc;
+  popupImage.alt = caption;
+  popupCaption.textContent = caption;
+
+  popup.classList.add("popup_opened");
+}
+
+//close Modal Image
+
+function closeImageModal() {
+  const popup = document.querySelector(".popup_type_iamge");
+  popup.classList.remove("popup_opened");
+}
