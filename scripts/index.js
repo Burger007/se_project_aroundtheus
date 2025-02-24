@@ -94,7 +94,6 @@ function getCardElement(cardData) {
 
   //add click lisinter to the cardEmange element
   //open modal with previewImageModal
-  window.deleteButton = cardElement.querySelector(".card__delete-button");
 
   likeBtutton.addEventListener("click", () => {
     likeBtutton.classList.toggle("card__like-button_active");
@@ -154,6 +153,12 @@ function openImageModal(imageSrc, caption) {
   previewModalCaption.textContent = caption;
 
   popup.classList.add("modal_opened");
+}
+
+function openImageModal() {
+  const previewModal = document.querySelector(".modal__image");
+
+  previewModalImage.classList.add("modal_opened");
 }
 
 //close Modal Iamgage
