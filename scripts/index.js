@@ -106,6 +106,9 @@ function getCardElement(cardData) {
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
+  cardImageEl.addEventListener("click", () =>
+    openImageModal(cardData.link, cardData.name)
+  );
   return cardElement;
 }
 
@@ -152,13 +155,7 @@ function openImageModal(imageSrc, caption) {
   previewModalImage.alt = caption;
   previewModalCaption.textContent = caption;
 
-  popup.classList.add("modal_opened");
-}
-
-function openImageModal() {
-  const previewModal = document.querySelector(".modal__image");
-
-  previewModalImage.classList.add("modal_opened");
+  openModal(previewModal);
 }
 
 //close Modal Iamgage
