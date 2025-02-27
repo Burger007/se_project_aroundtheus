@@ -158,9 +158,16 @@ function openImageModal(imageSrc, caption) {
   openModal(previewModal);
 }
 
-//close Modal Iamgage
+//open Modal Iamgage
 
-function closeImageModal() {
-  const previewModal = document.querySelector(".modal__image");
-  previewModalImage.classList.remove("modal_opened");
+function openModal(modal) {
+  modal.classList.add("modal_opened");
 }
+
+//close Moal
+
+const closeButtonImage = previewModal.querySelector(".modal__close");
+
+closeButtonImage.addEventListener("click", () => {
+  closeModal(previewModal);
+});
