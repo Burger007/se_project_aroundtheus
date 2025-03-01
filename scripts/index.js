@@ -83,15 +83,6 @@ cardAddCloseButton.addEventListener("click", () => {
   closeModal(cardAddPopup);
 });
 
-const closeButtons = document.querySelectorAll(".modal__close");
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => {
-    console.log("Close button clicked");
-    closePopup(popup);
-  });
-});
-
 closeButton.addEventListener("click", closeProfileModal);
 
 function getCardElement(cardData) {
@@ -172,3 +163,13 @@ function openImageModal(imageSrc, caption) {
 function openModal(modal) {
   modal.classList.add("modal_opened");
 }
+
+//close Moal
+const closeButtons = document.querySelectorAll(".modal__close");
+closeButtons.forEach((button) => {
+  const popup = button.closest(".modal");
+  button.addEventListener("click", () => {
+    console.log("Close button clicked");
+    closeModal(previewModal);
+  });
+});
