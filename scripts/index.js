@@ -130,8 +130,6 @@ function handlAddCardFormSubmit(evt) {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link });
-
-  closeModal(cardAddPopup);
 }
 
 //edit profile listiner
@@ -156,12 +154,6 @@ function openImageModal(imageSrc, caption) {
   previewModalCaption.textContent = caption;
 
   openModal(previewModal);
-}
-
-//open Modal Iamgage
-
-function openModal(modal) {
-  modal.classList.add("modal_opened");
 }
 
 //close Moal
