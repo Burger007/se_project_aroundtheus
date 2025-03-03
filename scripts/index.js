@@ -164,6 +164,6 @@ const closeButtons = document.querySelectorAll(".modal__close");
 closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
   button.addEventListener("click", () => {
-    closeModal(popup);
+    closeModal(previewModal);
   });
 });
