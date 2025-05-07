@@ -167,3 +167,11 @@ closeButtons.forEach((button) => {
     closeModal(popup);
   });
 });
+
+function checkInputValidity() {
+  //Edit profile input elements
+  const nameInput = document.querySelector("#profile-title-input");
+  const aboutInput = document.querySelector("#profile-description-input");
+
+  const saveButton = document.querySelector("#profile-edit-button");
+}

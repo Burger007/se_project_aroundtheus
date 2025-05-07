@@ -69,6 +69,9 @@
             id="profile-title-input"
             class="modal__input"
             placeholder="Your Name"
+            required
+            minlength="2"
+            maxlength="40"
           />
           <input
             type="text"
@@ -76,6 +79,9 @@
             id="profile-description-input"
             class="modal__input"
             placeholder="Job"
+            required
+            minlength="2"
+            maxlength="200"
           />
           <button class="modal__button">Save</button>
         </form>
@@ -121,7 +127,7 @@
           class="modal__close"
           id="image-close-button"
         ></button>
-        <img class="modal__image" src="" alt="" />
+        <img class="modal__image" alt="" />
         <p class="modal__caption"></p>
       </div>
     </div>
