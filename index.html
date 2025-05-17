@@ -63,17 +63,17 @@
         ></button>
         <h2 class="modal__heading">Edit Profile</h2>
         <form class="modal__form" novalidate>
+          <span>Only users that are 18 and over can visit the website</span>
           <input
             type="text"
             name="title"
             id="profile-title-input"
             class="modal__input"
             placeholder="Your Name"
-            required
             minlength="2"
             maxlength="40"
+            required
           />
-          <span class="modal__error" id="profile-title-input-error"></span>
 
           <input
             type="text"
@@ -81,15 +81,14 @@
             id="profile-description-input"
             class="modal__input"
             placeholder="Job"
-            required
             minlength="2"
             maxlength="200"
+            required
           />
-          <span
-            class="popup__error"
-            id="profile-description-input-error"
-          ></span>
-          <button class="modal__button">Save</button>
+          <span class="popup__error"></span>
+          <button class="modal__button" id="profile-save-button" type="submit">
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -103,15 +102,20 @@
           type="button"
         ></button>
         <h2 class="modal__heading">New Place</h2>
-        <form class="modal__form" id="add-modal">
-          <input
-            type="text"
-            name="title"
-            id="form-title-input"
-            class="modal__input"
-            placeholder="Title"
-            required
-          />
+        <form class="modal__form" id="add-modal" novalidate>
+          <label class="modal__label">
+            <input
+              type="text"
+              name="title"
+              id="form-title-input"
+              class="modal__input"
+              placeholder="Title"
+              required
+              minlength="1"
+              maxlength="30"
+            />
+            <span class="modal__error" id="modal__input_type_error"></span>
+          </label>
           <input
             type="url"
             name="image"
@@ -119,6 +123,8 @@
             class="modal__input"
             placeholder="Image URL"
             required
+            minlength="1"
+            maxlength="30"
           />
           <button class="modal__button" id="add-button" type="submit">
             Save

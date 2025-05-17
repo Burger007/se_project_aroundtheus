@@ -1,23 +1,25 @@
+function setEventListeners(formEl, options) {
+  const { inputSelector } = options;
+  const inputEls = [...formEl.querySelectorAll(options.formSelector)];
+  console.log(inputEls);
+}
+
 function enableValidation(options) {
-  const formElements = [...document.querySelectorAll(".modal__form")];
-  //The "..." is a spread operator it expeting that
-  //  whatever is next to it is an array or array like
-  // object and makes a copy of it
-  formElements.forEach((formElements) => {
-    formElements.addEventListener("submit", (evt) => {
+  const formEls = [...document.querySelectorAll(options.formSelector)];
+  formEls.forEach((formEls) => {
+    formEls.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
 
-    // look for all inputs inside of form
-    // loop through all the inputs to see if all are valid
-    // if input is not valid
-    // get validation message
-    // add error clas to input
-    // display error message
-    // disable button
-    // if all inputs are valid
-    // enable button
-    // reset error messages
+    setEventListeners(addCardFormElement, options);
+    //look for a;; input inside of form
+    //loop thorugh all the inputs to see if all are valid
+    //if input is not valid, get the valdiation message
+    //add error calss to input
+    //display error message
+    //disbale button
+    //if all inputs are valind = ensable button
+    //reset error messages
   });
 }
 
@@ -31,9 +33,3 @@ const config = {
 };
 
 enableValidation(config);
-
-function checkInputValidity() {
-  const nameInput = document.querySelector("#profile-title-input");
-  const aboutInput = document.querySelector("#profile-description-input");
-  const saveButton = document.querySelector("#profile-edit-button");
-}
