@@ -1,21 +1,41 @@
-function setEventListeners(formEl, options) {
+//enabeling validity by calling enableValidation by calling enableValidation()
+//pass all the settings on call
+
+function showInputError(ormEl, inputEl, options) {
+  const errorMessageEl = 
+}
+
+function checkInputValidity(formEl, inputEl, options) {
+  if (!inputEl.validity.valid) {
+    showInputError(formEl, inputEl, options);
+  } else {
+    hideInputError(formEl, inputEl, options);
+  }
+}
+
+function setEventListerners(formEl, options) {
   const { inputSelector } = options;
-  const inputEls = [...formEl.querySelectorAll(options.formSelector)];
-  console.log(inputEls);
+
+  const inputEls = [...formEl.querySelectorAll(inputSelector)];
+  inputEls.forEach((inputEl) => {
+    inputEl.addEventListener("input", (evt) => {
+      checkInputValidity(formEl, options, inputEl);
+    });
+  });
 }
 
 function enableValidation(options) {
   const formEls = [...document.querySelectorAll(options.formSelector)];
-  formEls.forEach((formEls) => {
-    formEls.addEventListener("submit", (evt) => {
+  formEls.forEach((formEl) => {
+    formEl.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
 
-    setEventListeners(addCardFormElement, options);
-    //look for a;; input inside of form
+    setEventListerners(formEl, options);
+    //look for all input inside of form
     //loop thorugh all the inputs to see if all are valid
     //if input is not valid, get the valdiation message
-    //add error calss to input
+    //add error class to input
     //display error message
     //disbale button
     //if all inputs are valind = ensable button
