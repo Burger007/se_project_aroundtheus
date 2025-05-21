@@ -163,8 +163,7 @@
 }
 
 .modal__button_disabled {
-  background-color: #ffffff;
-  color: #000000;
+  opacity: 0.1;
 }
 
 @media screen and (max-width: 600px) {
