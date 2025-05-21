@@ -23,17 +23,33 @@ function checkInputValidity(formEl, inputEl, options) {
   }
 }
 
-function disbaleButton(inputEl, formEl, options) {
-  rr;
+function toggleButtonState(inputEls, submitButton, options) {
+  let foundInvalid = false;
+  inputEls.forEach((input) => {
+    if (!input.validity.valid) {
+      foundInvalid = true;
+    }
+  });
+
+  if (foundInvalid) {
+    submitButton.classList.add(options.inactiveButtonClass);
+    submitButton.disabled = true;
+  } else {
+    submitButton.classList.remove(options.inactiveButtonClass);
+    submitButton.disabled = false;
+  }
 }
 
 function setEventListerners(formEl, options) {
   const { inputSelector } = options;
 
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
+  const submitButton = formEl.querySelector(".modal__button");
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (evt) => {
       checkInputValidity(formEl, inputEl, options);
+
+      toggleButtonState(inputEls, submitButton, options);
     });
   });
 }
