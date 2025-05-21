@@ -163,7 +163,13 @@
 }
 
 .modal__button_disabled {
-  opacity: 0.1;
+  background-color: #999;
+  opacity: 0.6;
+}
+
+.modal__button_disabled:hover {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 @media screen and (max-width: 600px) {
