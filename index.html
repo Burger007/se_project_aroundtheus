@@ -74,20 +74,23 @@
               maxlength="40"
               required
             />
-            <span class="modal__error"></span>
+            <span class="modal__error" id="profile-title-input-error"></span>
+
+            <input
+              type="text"
+              name="description"
+              id="profile-description-input"
+              class="modal__input modal__input_type_error"
+              placeholder="Job"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span
+              class="modal__error"
+              id="profile-description-input-error"
+            ></span>
           </label>
-
-          <input
-            type="text"
-            name="description"
-            id="profile-description-input"
-            class="modal__input modal__input_type_error"
-            placeholder="Job"
-            minlength="2"
-            maxlength="40"
-            required
-          />
-
           <button class="modal__button" id="profile-save-button" type="submit">
             Save
           </button>
@@ -112,10 +115,11 @@
               id="form-title-input"
               class="modal__input modal__input_type_error"
               placeholder="Title"
-              minlength="1"
+              minlength="2"
               maxlength="30"
               required
             />
+            <span class="modal__error" id="form-title-input-error"></span>
           </label>
           <label class="modal__label">
             <input
@@ -128,6 +132,7 @@
               minlength="1"
               maxlength="30"
             />
+            <span class="modal__error" id="form-image-input-error"></span>
           </label>
           <button class="modal__button" id="add-button" type="submit">
             Save

@@ -1,8 +1,18 @@
 //enabeling validity by calling enableValidation by calling enableValidation()
 //pass all the settings on call
 
-function showInputError(ormEl, inputEl, options) {
-  const errorMessageEl = 
+function showInputError(formEl, inputEl, options) {
+  const errorMessageEl = formEl.querySelector("#" + inputEl.id + `-error`);
+  inputEl.classList.add(options.inputErrorClass);
+  errorMessageEl.textContent = inputEl.validationMessage;
+  errorMessageEl.classList.add(options.errorClass);
+}
+
+function hideInputError(formEl, inputEl, options) {
+  const hideErrorMessage = formEl.querySelector("#" + inputEl.id + `-error`);
+  inputEl.classList.remove(options.inputErrorClass);
+  hideErrorMessage.textContent = "";
+  hideErrorMessage.classList.remove(options.errorClass);
 }
 
 function checkInputValidity(formEl, inputEl, options) {
@@ -13,13 +23,17 @@ function checkInputValidity(formEl, inputEl, options) {
   }
 }
 
+function disbaleButton(inputEl, formEl, options) {
+  rr;
+}
+
 function setEventListerners(formEl, options) {
   const { inputSelector } = options;
 
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (evt) => {
-      checkInputValidity(formEl, options, inputEl);
+      checkInputValidity(formEl, inputEl, options);
     });
   });
 }
