@@ -1,6 +1,3 @@
-//enabeling validity by calling enableValidation by calling enableValidation()
-//pass all the settings on call
-
 function showInputError(formEl, inputEl, options) {
   const errorMessageEl = formEl.querySelector("#" + inputEl.id + `-error`);
   inputEl.classList.add(options.inputErrorClass);
@@ -62,14 +59,6 @@ function enableValidation(options) {
     });
 
     setEventListerners(formEl, options);
-    //look for all input inside of form
-    //loop thorugh all the inputs to see if all are valid
-    //if input is not valid, get the valdiation message
-    //add error class to input
-    //display error message
-    //disbale button
-    //if all inputs are valind = ensable button
-    //reset error messages
   });
 }
 
