@@ -48,19 +48,35 @@ const jobInput = document.querySelector("#profile-description-input");
 
 const saveAddButton = document.querySelector("#add-button");
 
-const profileFormElement = profileEditModal.querySelector(".modal__form");
+const form = document.forms["profileForm"];
 const addCardFormElement = cardAddPopup.querySelector("#add-modal");
 const cardListEl = document.querySelector(".cards__list");
 
 const cardTitleInput = cardAddPopup.querySelector("#form-title-input");
 const cardUrlInput = cardAddPopup.querySelector("#form-image-input");
 
+// Image Preview Modal
+const previewModal = document.querySelector("#popup_type_image");
+const previewModalImage = previewModal.querySelector(".modal__image");
+const previewModalCaption = previewModal.querySelector(".modal__caption");
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscClose);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscClose);
+}
+
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
 }
 
 // Open Modals
@@ -78,10 +94,6 @@ modalAddButton.addEventListener("click", () => {
 function closeProfileModal() {
   closeModal(profileEditModal);
 }
-
-cardAddCloseButton.addEventListener("click", () => {
-  closeModal(cardAddPopup);
-});
 
 profileCloseButton.addEventListener("click", closeProfileModal);
 
@@ -138,18 +150,13 @@ function handleAddCardFormSubmit(evt) {
 }
 
 // Add Event Listeners
-profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+form.addEventListener("submit", handleProfileFormSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 // Render Initial Cards
 initialCards.forEach((cardData) => {
   renderCard(cardData);
 });
-
-// Image Preview Modal
-const previewModal = document.querySelector("#popup_type_image");
-const previewModalImage = previewModal.querySelector(".modal__image");
-const previewModalCaption = previewModal.querySelector(".modal__caption");
 
 function openImageModal(imageSrc, caption) {
   previewModalImage.src = imageSrc;
