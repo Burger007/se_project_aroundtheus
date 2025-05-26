@@ -42,10 +42,10 @@ function setEventListerners(formEl, options) {
 
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
   const submitButton = formEl.querySelector(".modal__button");
+  toggleButtonState(inputEls, submitButton, options);
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (evt) => {
       checkInputValidity(formEl, inputEl, options);
-
       toggleButtonState(inputEls, submitButton, options);
     });
   });

@@ -70,6 +70,7 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscClose);
 }
 
+//close modal by pressing "ESC" btn
 function handleEscClose(evt) {
   if (evt.key === "Escape") {
     const openedModal = document.querySelector(".modal_opened");
@@ -94,8 +95,6 @@ modalAddButton.addEventListener("click", () => {
 function closeProfileModal() {
   closeModal(profileEditModal);
 }
-
-profileCloseButton.addEventListener("click", closeProfileModal);
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -127,7 +126,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-  closeProfileModal();
+  closeModal(profileEditModal);
 }
 
 // Render a New Card
