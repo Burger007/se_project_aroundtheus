@@ -80,10 +80,21 @@ function handleEscClose(evt) {
   }
 }
 
+const modals = document.querySelectorAll(".modal");
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target === modal) {
+      closeModal(modal);
+    }
+  });
+});
+
 // Open Modals
+
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
+  resetValidation(form, config);
   openModal(profileEditModal);
 });
 
@@ -145,7 +156,7 @@ function handleAddCardFormSubmit(evt) {
 
   // Close the modal after submission
   closeModal(cardAddPopup);
-  evt.target.reset();
+  disableButton(evt.submitter, config);
 }
 
 // Add Event Listeners

@@ -62,6 +62,25 @@ function enableValidation(options) {
   });
 }
 
+//Reset Valiadation
+const resetValidation = (formEl, config) => {
+  const inputEls = [...formEl.querySelectorAll(config.inputSelector)];
+  inputEls.forEach((inputEl) => {
+    const errorElement = formEl.querySelector(`#${inputEl.id}-error`);
+    inputEl.classList.remove(config.inputErrorClass);
+    errorElement.textContent = "";
+    errorElement.classList.remove(config.errorClass);
+  });
+
+  const submitButton = formEl.querySelector(config.submitButtonSelector);
+  toggleButtonState(inputEls, submitButton, config);
+};
+
+function disableButton(submitButton, options) {
+  submitButton.classList.add(options.inactiveButtonClass);
+  submitButton.disabled = true;
+}
+
 const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
