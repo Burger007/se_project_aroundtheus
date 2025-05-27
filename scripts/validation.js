@@ -37,11 +37,13 @@ function toggleButtonState(inputEls, submitButton, options) {
   }
 }
 
+//Setting Event Listerners
 function setEventListerners(formEl, options) {
   const { inputSelector } = options;
 
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
-  const submitButton = formEl.querySelector(".modal__button");
+  const { submitButtonSelector } = options;
+  const submitButton = formEl.querySelector(config.submitButtonSelector);
   toggleButtonState(inputEls, submitButton, options);
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (evt) => {
@@ -66,10 +68,7 @@ function enableValidation(options) {
 const resetValidation = (formEl, config) => {
   const inputEls = [...formEl.querySelectorAll(config.inputSelector)];
   inputEls.forEach((inputEl) => {
-    const errorElement = formEl.querySelector(`#${inputEl.id}-error`);
-    inputEl.classList.remove(config.inputErrorClass);
-    errorElement.textContent = "";
-    errorElement.classList.remove(config.errorClass);
+    hideInputError(formEl, inputEl, config);
   });
 
   const submitButton = formEl.querySelector(config.submitButtonSelector);
