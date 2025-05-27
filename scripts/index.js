@@ -48,7 +48,7 @@ const jobInput = document.querySelector("#profile-description-input");
 
 const saveAddButton = document.querySelector("#add-button");
 
-const form = document.forms["profileForm"];
+const profileForm = document.forms["profileForm"];
 const addCardFormElement = cardAddPopup.querySelector("#add-modal");
 const cardListEl = document.querySelector(".cards__list");
 
