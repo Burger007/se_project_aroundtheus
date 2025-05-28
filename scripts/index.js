@@ -94,7 +94,8 @@ modals.forEach((modal) => {
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  resetValidation(form, config);
+
+  resetValidation(profileForm, config);
   openModal(profileEditModal);
 });
 
@@ -147,6 +148,7 @@ function renderCard(data) {
 }
 
 // Event Handler for Adding a New Card
+addCardFormElement.reset();
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
@@ -160,7 +162,7 @@ function handleAddCardFormSubmit(evt) {
 }
 
 // Add Event Listeners
-form.addEventListener("submit", handleProfileFormSubmit);
+profileForm.addEventListener("submit", handleProfileFormSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 // Render Initial Cards
