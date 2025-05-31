@@ -148,7 +148,7 @@ function renderCard(data) {
 }
 
 // Event Handler for Adding a New Card
-addCardFormElement.reset();
+
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
@@ -159,6 +159,7 @@ function handleAddCardFormSubmit(evt) {
   // Close the modal after submission
   closeModal(cardAddPopup);
   disableButton(evt.submitter, config);
+  addCardFormElement.reset();
 }
 
 // Add Event Listeners
