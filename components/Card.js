@@ -1,8 +1,9 @@
 class Card {
   constructor(data, cardSelector, handleImageClick) {
-    this._data = data;
+    this.name = data.name;
+    this._link = data.link;
     this._cardSelector = cardSelector;
-    this._handeImageClick = handleImageClick;
+    this._handleImageClick = handleImageClick;
   }
 
   _setEventListeners() {
@@ -13,6 +14,9 @@ class Card {
   }
 
   _getTemplate() {
-    //
+    return document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".card")
+      .cloneNode(true);
   }
 }
