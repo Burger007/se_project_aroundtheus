@@ -14,8 +14,8 @@ class Card {
   }
 
   _setEventListeners() {
-    this._imageElement.addEventListener("click", () => {
-      this._handleImageClick(this);
+    this._likeButton.addEventListener("click", () => {
+      this._handleLikeIcon();
     });
 
     this._deleteButton.addEventListener("click", () => {
@@ -24,11 +24,12 @@ class Card {
 
     this._imageElement.addEventListener("click", () => {
       this._handleImageClick({
-        name: cardData.name,
+        name: this.name,
         link: this._link,
       });
     });
   }
+
   _handleLikeIcon() {
     this._likeButton.classList.toggle("card__like-button_active");
   }
@@ -43,5 +44,13 @@ class Card {
     this._deleteButton = this._element.querySelector(".card__delete-button");
     this._imageElement = this._element.querySelector(".card__image");
     this._titleElement = this._element.querySelector(".card__title");
+
+    this._imageElement.src = this._link;
+    this._imageElement.alt = this.name;
+    this._titleElement.textContent = this.name;
+
+    this._setEventListeners();
+
+    return this._element;
   }
 }
