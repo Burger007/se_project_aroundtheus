@@ -11,12 +11,10 @@ class Card {
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
-
-    return cardTemplate;
   }
 
   _setEventListeners() {
-    this._cardImageElement.addEventListener("click", () => {
+    this._imageElement.addEventListener("click", () => {
       this._handleImageClick(this);
     });
 
@@ -24,27 +22,26 @@ class Card {
       this._handleDeleteCard();
     });
 
-    this._iamgeElement.addEventListener("click", () => {
+    this._imageElement.addEventListener("click", () => {
       this._handleImageClick({
-        name: this._handleImageClick,
+        name: cardData.name,
         link: this._link,
       });
     });
   }
   _handleLikeIcon() {
-    this._likeBitton.classList.toggle("card__like-button_active");
+    this._likeButton.classList.toggle("card__like-button_active");
   }
 
   _handleDeleteCard() {
     this._element.remove();
-    this._element = null;
   }
 
   generateCard() {
     this._element = this._getTemplate();
-    this._likeButton = this._element.querySelector(".card__likeButton");
+    this._likeButton = this._element.querySelector(".card__like-button");
     this._deleteButton = this._element.querySelector(".card__delete-button");
-    this._iamgeElement = this._element.querySelector(".card__image");
-    this._titleElement = this._element.querySelector("card__title");
+    this._imageElement = this._element.querySelector(".card__image");
+    this._titleElement = this._element.querySelector(".card__title");
   }
 }
