@@ -1,3 +1,5 @@
+import Card from "../components/Card.js";
+import FormValidator from "../components/formValidator.js";
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -95,7 +97,7 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
 
-  resetValidation(profileForm, config);
+  profileFormValidator.resetValidation();
   openModal(profileEditModal);
 });
 
@@ -108,29 +110,10 @@ function closeProfileModal() {
   closeModal(profileEditModal);
 }
 
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  cardTitleEl.textContent = cardData.name;
-  cardImageEl.addEventListener("click", () =>
-    openImageModal(cardData.link, cardData.name)
-  );
-
-  return cardElement;
+function renderCard(cardData) {
+  const card = new Card(cardData, "#card-template", openImageModal);
+  const cardElement = card.generateCard();
+  cardListEl.prepend(cardElement);
 }
 
 // Event Handler for Profile Form Submission
@@ -147,7 +130,7 @@ function renderCard(data) {
   cardListEl.prepend(cardElement);
 }
 
-// Event Handler for Adding a New Card
+// adding New Card
 
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
@@ -156,7 +139,6 @@ function handleAddCardFormSubmit(evt) {
 
   renderCard({ name, link });
 
-  // Close the modal after submission
   closeModal(cardAddPopup);
   disableButton(evt.submitter, config);
   addCardFormElement.reset();
@@ -179,7 +161,6 @@ function openImageModal(imageSrc, caption) {
   openModal(previewModal);
 }
 
-// Close Modal Event Listeners
 const closeButtons = document.querySelectorAll(".modal__close");
 closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
@@ -187,3 +168,11 @@ closeButtons.forEach((button) => {
     closeModal(popup);
   });
 });
+initialCards.forEach(renderCard);
+
+//FormVadlidation Setpup
+const profileFormValidator = new FormValidator(config, profileForm);
+profileFormValidator.enableValidation();
+
+const addCardFormValidator = new FormValidator(config, addCardFormElement);
+addCardFormValidator.enableValidation();
