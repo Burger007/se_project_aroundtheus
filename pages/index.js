@@ -27,6 +27,15 @@ const initialCards = [
   },
 ];
 
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
 // DOM Elements
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
@@ -124,12 +133,6 @@ function handleProfileFormSubmit(evt) {
   closeModal(profileEditModal);
 }
 
-// Render a New Card
-function renderCard(data) {
-  const cardElement = getCardElement(data);
-  cardListEl.prepend(cardElement);
-}
-
 // adding New Card
 
 function handleAddCardFormSubmit(evt) {
@@ -140,7 +143,8 @@ function handleAddCardFormSubmit(evt) {
   renderCard({ name, link });
 
   closeModal(cardAddPopup);
-  disableButton(evt.submitter, config);
+  addCardFormValidator.resetValidation();
+
   addCardFormElement.reset();
 }
 
@@ -153,11 +157,10 @@ initialCards.forEach((cardData) => {
   renderCard(cardData);
 });
 
-function openImageModal(imageSrc, caption) {
-  previewModalImage.src = imageSrc;
-  previewModalImage.alt = caption;
-  previewModalCaption.textContent = caption;
-
+function openImageModal({ name, link }) {
+  previewModalImage.src = link;
+  previewModalImage.alt = name;
+  previewModalCaption.textContent = name;
   openModal(previewModal);
 }
 
