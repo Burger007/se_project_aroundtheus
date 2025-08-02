@@ -143,9 +143,8 @@ function handleAddCardFormSubmit(evt) {
   renderCard({ name, link });
 
   closeModal(cardAddPopup);
+  aaddCardFormElement.reset();
   addCardFormValidator.resetValidation();
-
-  addCardFormElement.reset();
 }
 
 // Add Event Listeners
