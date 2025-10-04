@@ -1,5 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/formValidator.js";
+import Section from "../components/section.js";
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -143,18 +144,13 @@ function handleAddCardFormSubmit(evt) {
   renderCard({ name, link });
 
   closeModal(cardAddPopup);
-  aaddCardFormElement.reset();
+  addCardFormElement.reset();
   addCardFormValidator.resetValidation();
 }
 
 // Add Event Listeners
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
-
-// Render Initial Cards
-initialCards.forEach((cardData) => {
-  renderCard(cardData);
-});
 
 function openImageModal({ name, link }) {
   previewModalImage.src = link;
@@ -163,6 +159,7 @@ function openImageModal({ name, link }) {
   openModal(previewModal);
 }
 
+// Render Initial Cards
 const closeButtons = document.querySelectorAll(".modal__close");
 closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
