@@ -159,15 +159,18 @@ function openImageModal({ name, link }) {
   openModal(previewModal);
 }
 
-// Render Initial Cards
-const closeButtons = document.querySelectorAll(".modal__close");
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => {
-    closeModal(popup);
-  });
-});
-initialCards.forEach(renderCard);
+//initial card render
+const cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const cardElement = renderCard(item);
+      cardSection.addItem(cardElement);
+    },
+  },
+  ".cards__list"
+);
+cardSection.renderItems(initialCards);
 
 //FormVadlidation Setpup
 const profileFormValidator = new FormValidator(config, profileForm);
