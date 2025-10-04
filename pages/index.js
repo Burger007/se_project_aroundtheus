@@ -1,6 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/formValidator.js";
-import Section from "../components/section.js";
+import Section from "../components/Section.js";
 const initialCards = [
   {
     name: "Yosemite Valley",
