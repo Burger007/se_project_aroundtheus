@@ -122,8 +122,8 @@ function closeProfileModal() {
 
 function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", openImageModal);
-  const cardElement = card.generateCard();
-  cardListEl.prepend(cardElement);
+
+  return card.generateCard();
 }
 
 // Event Handler for Profile Form Submission
@@ -159,6 +159,15 @@ function openImageModal({ name, link }) {
   openModal(previewModal);
 }
 
+// Render Initial Cards
+const closeButtons = document.querySelectorAll(".modal__close");
+closeButtons.forEach((button) => {
+  const popup = button.closest(".modal");
+  button.addEventListener("click", () => {
+    closeModal(popup);
+  });
+});
+
 //initial card render
 const cardSection = new Section(
   {
@@ -170,7 +179,7 @@ const cardSection = new Section(
   },
   ".cards__list"
 );
-cardSection.renderItems(initialCards);
+cardSection.renderItems();
 
 //FormVadlidation Setpup
 const profileFormValidator = new FormValidator(config, profileForm);
