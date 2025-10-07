@@ -1,10 +1,30 @@
 //The popupWithForm class is a child class of the popup class
 import Popup from "./Popup.js";
-class popupWithForm extends Popup {
+class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super({ popupSelector });
-    this._popupForm = this._popupElement.querySelector(".modal__form");
-    this._handleFormSubmit = handleFormSubmit;
+    this._popupForm = this._popupElement.querySelector("form");
+    this.handleFormSubmit = handleFormSubmit;
+    this._submitHandler = this._submitHandler.bind(this);
+  }
+
+  _getInputValues() {
+    const inputs = Array.from(
+      this._popupForm.querySelectorAll(".modal__input")
+    );
+    const values = {};
+    inputs.forEach((input) => (values[input.name] = input.value));
+    return values;
+  }
+
+  _submitHandler(evt) {
+    evt.preventDefault();
+    this._handleFormSubmit(this._getInputValues());
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
+    this._popupForm.addEventListener("submit", this._submitHandler);
   }
 
   close() {
@@ -12,10 +32,3 @@ class popupWithForm extends Popup {
     super.close();
   }
 }
-
-//index.js
-
-//const newCardPopup = new popupWithForm("#add-popup", () => {});
-//newCardPopup.open()
-
-//newCardPopup.close();
