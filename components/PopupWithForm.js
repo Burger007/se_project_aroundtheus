@@ -1,8 +1,8 @@
 //The popupWithForm class is a child class of the popup class
-import Popup from "./Popup.js";
-class PopupWithForm extends Popup {
+import Popup from "../Popup.js";
+export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
-    super({ popupSelector });
+    super(popupSelector);
     this._popupForm = this._popupElement.querySelector("form");
     this.handleFormSubmit = handleFormSubmit;
     this._submitHandler = this._submitHandler.bind(this);
