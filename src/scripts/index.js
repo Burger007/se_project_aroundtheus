@@ -1,191 +1,118 @@
 import Card from "../../components/Card.js";
-import FormValidator from "../../components/formValidator.js";
+import FormValidator from "../../components/FormValidator.js"; // Ensure file name case matches!
 import Section from "../../components/Section.js";
-import Popup from "../../components/Popup.js";
+import PopupWithForm from "../../components/PopupWithForm.js";
+import PopupWithImage from "../../components/PopupWithImage.js";
+import UserInfo from "../../components/UserInfo.js";
 
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
+import { initialCards, validationConfig, selectors } from "../../utils/constants.js";
 
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
+// ===== DOM lookups via selectors (centralized) =====
+const cardListEl = document.querySelector(selectors.cardsContainer);
+const profileEditButton = document.querySelector(selectors.profileEditButton);
+const addCardButton = document.querySelector(selectors.addCardButton);
 
-// DOM Elements
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
-const profileEditButton = document.querySelector("#profile-edit-button");
-const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileCloseButton = document.querySelector("#profile-close-button");
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
-const profileTitleInput = document.querySelector("#profile-title-input");
+// Profile text nodes + inputs
+const profileTitle = document.querySelector(selectors.profileTitle);
+const profileDescription = document.querySelector(selectors.profileDescription);
+const profileForm = document.querySelector(selectors.profileForm);
+const profileNameInput = document.querySelector(selectors.profileNameInput);
+const profileJobInput = document.querySelector(selectors.profileJobInput);
 
-const cardAddPopup = document.querySelector("#add-popup");
-const modalAddButton = document.querySelector(".profile__add-button");
-const cardAddCloseButton = document.querySelector("#card-add-close-button");
+// Add-card form + inputs
+const addCardForm = document.querySelector(selectors.addCardForm);
+const addTitleInput = document.querySelector(selectors.addTitleInput);
+const addLinkInput = document.querySelector(selectors.addLinkInput);
 
-const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
-);
-
-const nameInput = document.querySelector("#profile-title-input");
-const jobInput = document.querySelector("#profile-description-input");
-
-const saveAddButton = document.querySelector("#add-button");
-
-const profileForm = document.forms["profileForm"];
-const addCardFormElement = cardAddPopup.querySelector("#add-modal");
-const cardListEl = document.querySelector(".cards__list");
-
-const cardTitleInput = cardAddPopup.querySelector("#form-title-input");
-const cardUrlInput = cardAddPopup.querySelector("#form-image-input");
-
-// Image Preview Modal
-const previewModal = document.querySelector("#popup_type_image");
-const previewModalImage = previewModal.querySelector(".modal__image");
-const previewModalCaption = previewModal.querySelector(".modal__caption");
-
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscClose);
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleEscClose);
-}
-
-//close modal by pressing "ESC" btn
-function handleEscClose(evt) {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    if (openedModal) {
-      closeModal(openedModal);
-    }
-  }
-}
-
-const modals = document.querySelectorAll(".modal");
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", (evt) => {
-    if (evt.target === modal) {
-      closeModal(modal);
-    }
-  });
+// ===== UserInfo instance =====
+const userInfo = new UserInfo({
+  nameSelector: selectors.profileTitle,
+  jobSelector: selectors.profileDescription,
 });
 
-// Open Modals
-
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-
-  profileFormValidator.resetValidation();
-  openModal(profileEditModal);
+// ===== Image preview popup =====
+const imagePreviewPopup = new PopupWithImage({
+  popupSelector: selectors.imagePreviewModal,
+  imageSelector: selectors.imagePreviewImg,
+  captionSelector: selectors.imagePreviewCaption,
 });
+imagePreviewPopup.setEventListeners();
 
-modalAddButton.addEventListener("click", () => {
-  openModal(cardAddPopup);
-});
-
-// Close Profile Modal
-function closeProfileModal() {
-  closeModal(profileEditModal);
+// helper passed to Card to open image
+function openImageModal({ name, link }) {
+  imagePreviewPopup.open({ name, link });
 }
 
-function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template", openImageModal);
-
+// ===== Card renderer =====
+function createCard(cardData) {
+  // Card signature in your project: new Card(cardData, "#card-template", openImageModal)
+  const card = new Card(cardData, selectors.cardTemplate, openImageModal);
   return card.generateCard();
 }
 
-// Event Handler for Profile Form Submission
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileTitle.textContent = nameInput.value;
-  profileDescription.textContent = jobInput.value;
-  closeModal(profileEditModal);
-}
-
-// adding New Card
-
-function handleAddCardFormSubmit(evt) {
-  evt.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-
-  renderCard({ name, link });
-
-  closeModal(cardAddPopup);
-  addCardFormElement.reset();
-  addCardFormValidator.resetValidation();
-}
-
-// Add Event Listeners
-profileForm.addEventListener("submit", handleProfileFormSubmit);
-addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
-
-function openImageModal({ name, link }) {
-  previewModalImage.src = link;
-  previewModalImage.alt = name;
-  previewModalCaption.textContent = name;
-  openModal(previewModal);
-}
-
-// Render Initial Cards
-const closeButtons = document.querySelectorAll(".modal__close");
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => {
-    closeModal(popup);
-  });
-});
-
-//initial card render
+// ===== Section instance (render list) =====
+// Your Section currently uses { items, renderer } in constructor and .renderItems() with no args.
+// If that’s how your Section is written, this matches it:
 const cardSection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const cardElement = renderCard(item);
+      const cardElement = createCard(item);
       cardSection.addItem(cardElement);
     },
   },
-  ".cards__list"
+  selectors.cardsContainer
 );
 cardSection.renderItems();
 
-//FormVadlidation Setpup
-const profileFormValidator = new FormValidator(config, profileForm);
+// ===== Validators =====
+const profileFormValidator = new FormValidator(validationConfig, profileForm);
 profileFormValidator.enableValidation();
-
-const addCardFormValidator = new FormValidator(config, addCardFormElement);
+const addCardFormValidator = new FormValidator(validationConfig, addCardForm);
 addCardFormValidator.enableValidation();
+
+// ===== Profile edit popup (form) =====
+const profilePopup = new PopupWithForm({
+  popupSelector: selectors.profileEditModal,
+  handleFormSubmit: (values) => {
+    // Make sure your inputs have name="name" and name="job" in HTML:
+    // <input id="profile-title-input" name="name" ...>
+    // <input id="profile-description-input" name="job" ...>
+    userInfo.setUserInfo({ name: values.name, job: values.job });
+  },
+});
+profilePopup.setEventListeners();
+profilePopup.resetValidationHook(() => profileFormValidator.resetValidation());
+
+// Pre-fill on open
+profileEditButton.addEventListener("click", () => {
+  const current = userInfo.getUserInfo();
+  profileNameInput.value = current.name;
+  profileJobInput.value = current.job;
+  profilePopup.open();
+});
+
+// ===== Add-card popup (form) =====
+const addCardPopup = new PopupWithForm({
+  popupSelector: selectors.addCardModal,
+  handleFormSubmit: (values) => {
+    // Make sure your inputs have name="title" and name="link" in HTML:
+    // <input id="form-title-input" name="title" ...>
+    // <input id="form-image-input" name="link" ...>
+    const newCardEl = createCard({ name: values.title, link: values.link });
+    // Insert to the top (prepend)
+    cardListEl.prepend(newCardEl);
+    addCardFormValidator.resetValidation();
+  },
+});
+addCardPopup.setEventListeners();
+addCardPopup.resetValidationHook(() => addCardFormValidator.resetValidation());
+
+addCardButton.addEventListener("click", () => {
+  addCardPopup.open();
+});
+
+// ===== Remove legacy modal handlers =====
+// - Deleted openModal/closeModal/handleEscClose
+// - Deleted overlay listeners on .modal (Popup handles it)
+// - Close buttons are handled by Popup.setEventListeners()

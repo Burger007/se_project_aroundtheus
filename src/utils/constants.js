@@ -1,0 +1,49 @@
+// src/utils/constants.js
+export const initialCards = [
+  { name: "Yosemite Valley", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg" },
+  { name: "Lake Louise", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg" },
+  { name: "Bald Mountains", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg" },
+  { name: "Latemar", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg" },
+  { name: "Vanoise National Park", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg" },
+  { name: "Lago di Braies", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg" }
+];
+
+export const validationConfig = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+export const selectors = {
+  // templates/containers
+  cardTemplate: "#card-template",
+  cardsContainer: ".cards__list",
+
+  // profile
+  profileEditButton: "#profile-edit-button",
+  profileEditModal: "#profile-edit-modal",
+  profileTitle: ".profile__title",
+  profileDescription: ".profile__description",
+  profileForm: "form[name='profileForm']", // adjust if your form has a different name
+  profileNameInput: "#profile-title-input",
+  profileJobInput: "#profile-description-input",
+
+  // add-card
+  addCardButton: ".profile__add-button",
+  addCardModal: "#add-popup",
+  addCardForm: "#add-modal", // this is your form inside the add popup
+  addTitleInput: "#form-title-input",
+  addLinkInput: "#form-image-input",
+
+  // image preview
+  imagePreviewModal: "#popup_type_image",
+  imagePreviewImg: ".modal__image",
+  imagePreviewCaption: ".modal__caption",
+
+  // global
+  closeButtons: ".modal__close",
+  modals: ".modal",
+};
