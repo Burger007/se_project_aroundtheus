@@ -1,4 +1,4 @@
-// src/utils/constants.js
+
 export const initialCards = [
   { name: "Yosemite Valley", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg" },
   { name: "Lake Louise", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg" },
@@ -18,32 +18,31 @@ export const validationConfig = {
 };
 
 export const selectors = {
-  // templates/containers
+
   cardTemplate: "#card-template",
   cardsContainer: ".cards__list",
 
-  // profile
+
   profileEditButton: "#profile-edit-button",
   profileEditModal: "#profile-edit-modal",
   profileTitle: ".profile__title",
   profileDescription: ".profile__description",
-  profileForm: "form[name='profileForm']", // adjust if your form has a different name
+  profileForm: "form[name='profileForm']", 
   profileNameInput: "#profile-title-input",
   profileJobInput: "#profile-description-input",
 
-  // add-card
+
   addCardButton: ".profile__add-button",
   addCardModal: "#add-popup",
-  addCardForm: "#add-modal", // this is your form inside the add popup
+  addCardForm: "#add-modal", 
   addTitleInput: "#form-title-input",
   addLinkInput: "#form-image-input",
 
-  // image preview
+
   imagePreviewModal: "#popup_type_image",
   imagePreviewImg: ".modal__image",
   imagePreviewCaption: ".modal__caption",
 
-  // global
   closeButtons: ".modal__close",
   modals: ".modal",
 };
