@@ -2,6 +2,8 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/formValidator.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWIthImage.js";
+import PopupWithForm from "../components/PopupWithForm.js"
+
 
 import "../pages/index.css";
 
@@ -161,6 +163,17 @@ const popupWithImage = new PopupWithImage('#popup_type_image');
 function openImageModal(card) {
   popupWithImage.open(card);
 }
+
+
+const popupWithForm = new PopupWithForm(
+  '.popup_type_edit',
+  (formData) => {
+    console.log('Form submitted', formData);
+    popupWithForm.close();
+  });
+  popupWithForm.setEventListeners();
+
+
 
 // Render Initial Cards
 const closeButtons = document.querySelectorAll(".modal__close");

@@ -1,5 +1,5 @@
 //The popupWithForm class is a child class of the popup class
-import Popup from "../Popup.js";
+import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
@@ -19,7 +19,7 @@ export default class PopupWithForm extends Popup {
 
   _submitHandler(evt) {
     evt.preventDefault();
-    this._handleFormSubmit(this._getInputValues());
+    this.handleFormSubmit(this._getInputValues());
   }
 
   setEventListeners() {
