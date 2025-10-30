@@ -109,13 +109,7 @@ modals.forEach((modal) => {
 
 // Open Modals
 
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
 
-  profileFormValidator.resetValidation();
-  openModal(profileEditModal);
-});
 
 modalAddButton.addEventListener("click", () => {
   openModal(cardAddPopup);
@@ -132,13 +126,7 @@ function renderCard(cardData) {
   return card.generateCard();
 }
 
-// Event Handler for Profile Form Submission
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileTitle.textContent = nameInput.value;
-  profileDescription.textContent = jobInput.value;
-  closeModal(profileEditModal);
-}
+
 
 // adding New Card
 
@@ -155,7 +143,7 @@ function handleAddCardFormSubmit(evt) {
 }
 
 // Add Event Listeners
-profileForm.addEventListener("submit", handleProfileFormSubmit);
+
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 const popupWithImage = new PopupWithImage('#popup_type_image');
@@ -166,14 +154,21 @@ function openImageModal(card) {
 
 
 const popupWithForm = new PopupWithForm(
-  '.popup_type_edit',
+  '#profile-edit-modal',
   (formData) => {
     console.log('Form submitted', formData);
     popupWithForm.close();
   });
-  popupWithForm.setEventListeners();
+  popupWithForm.setEventListeners(); 
 
+profileEditButton.addEventListener('click', () => {
+ 
+ 
 
+  profileFormValidator.resetValidation();
+
+  popupWithForm.open();
+});
 
 // Render Initial Cards
 const closeButtons = document.querySelectorAll(".modal__close");
