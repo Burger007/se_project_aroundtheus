@@ -1,8 +1,9 @@
-import Popup from "./Popup.js";
-class UserInfo extends Popup {
+export default class UserInfo {
+  
   constructor({ nameSelector, jobSelector }) {
+    
     this._nameElement = document.querySelector(nameSelector);
-    this.jobSelector = document.querySelector(jobSelector);
+    this._jobElement = document.querySelector(jobSelector);
   }
 
   getUserInfo() {
