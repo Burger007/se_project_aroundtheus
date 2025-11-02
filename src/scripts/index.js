@@ -3,6 +3,7 @@ import FormValidator from "../components/formValidator.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWIthImage.js";
 import PopupWithForm from "../components/PopupWithForm.js"
+import Userinfo from "../components/UserInfo.js";
 
 
 import "../pages/index.css";
@@ -134,9 +135,11 @@ function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
+  const image = cardUrlInput.value;
 
-  renderCard({ name, link });
-
+  const cardElement = renderCard({ name, link, image });
+  cardSection.addItem(cardElement);
+  
   closeModal(cardAddPopup);
   addCardFormElement.reset();
   addCardFormValidator.resetValidation();
@@ -162,7 +165,6 @@ const popupWithForm = new PopupWithForm(
   popupWithForm.setEventListeners(); 
 
 profileEditButton.addEventListener('click', () => {
- 
  
 
   profileFormValidator.resetValidation();
