@@ -4,6 +4,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWIthImage.js";
 import PopupWithForm from "../components/PopupWithForm.js"
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 
 import { initialCards, validationConfig, selectors } from "../utils/Constants.js";
 
@@ -17,7 +18,7 @@ import "../pages/index.css";
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const cardAddPopup = document.querySelector('#add-popup');
-const modalAddButton = document.querySelector(".profile__add-button");
+const modalAddButton = document.querySelector("#add-card-button");
 
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
@@ -25,6 +26,15 @@ const profileDescriptionInput = document.querySelector(
 
 const profileForm = document.forms["profileForm"];
 const addCardFormElement = cardAddPopup.querySelector("#add-modal");
+
+
+const api = new Api ({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers:{
+    authorization:"1b0a9c48-0195-4c7c-8c0d-f5778470ca43",
+    "Content-Type":"application/json"
+  }
+})
 
 
 
