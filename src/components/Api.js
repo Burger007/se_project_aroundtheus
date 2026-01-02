@@ -1,23 +1,34 @@
-class Api {
+export default class Api {
     constructor(options){
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
     }
 
     getInitialCards(){
-    return fetch(`${this._baseUrl}/Card`, {
+    return fetch(`${this._baseUrl}/cards`, {
         headers: this._headers
     })
     .then(res => {
-        if(res.ok){
+        if(res.status){
+           return res.json();
            
-           console.log(res);
         }
         return Promise.reject(`Error: ${res.status}`);
         });
 }
+        getUserInfo(){
+            return fetch(`${this.baseUrl}/users/me`,{
+                headers: this._headers
+            })
+            .then(res =>{
+                if(res.ok){
+                    return res.json();
+                }
+                        return Promise.reject(`Error: ${res.status}`);
 
-}
+            });
+            
+        }
+        }
 
 
-export default Api;

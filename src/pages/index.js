@@ -28,15 +28,9 @@ const profileForm = document.forms["profileForm"];
 const addCardFormElement = cardAddPopup.querySelector("#add-modal");
 
 
-const api = new Api ({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers:{
-    authorization:"1b0a9c48-0195-4c7c-8c0d-f5778470ca43",
-    "Content-Type":"application/json"
-  }
-})
 
 
+ 
 
 
 function renderCard(cardData) {
@@ -110,6 +104,17 @@ const cardSection = new Section(
   ".cards__list"
 );
 cardSection.renderItems();
+
+
+const api = new Api ({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1/",
+  method:"POST",
+  headers:{
+    authorization:"1b0a9c48-0195-4c7c-8c0d-f5778470ca43",
+    "Content-Type":"application/json"
+  }
+})
+
 
 //FormVadlidation Setpup
 const profileFormValidator = new FormValidator(validationConfig, profileForm, selectors);
