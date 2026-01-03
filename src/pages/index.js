@@ -108,12 +108,22 @@ cardSection.renderItems();
 
 const api = new Api ({
   baseUrl: "https://around-api.en.tripleten-services.com/v1/",
-  method:"POST",
   headers:{
     authorization:"1b0a9c48-0195-4c7c-8c0d-f5778470ca43",
     "Content-Type":"application/json"
   }
+  
 })
+
+
+
+//Promise.all([api.getUserInfo(), api.getInitialCards()])
+ // .then(([userData, cards]) => {
+//    userInfo.setUserInfo(userData);
+ //   cardSection.renderItems(cards);
+//  })
+ // .catch(console.error);
+
 
 
 //FormVadlidation Setpup
