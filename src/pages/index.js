@@ -52,6 +52,7 @@ const userInfo = new UserInfo({
   jobSelector:'.profile__description'
 });
 
+
 const addCardPopup = new PopupWithForm(
   '#add-popup',
   (formData) => {
@@ -73,12 +74,15 @@ modalAddButton.addEventListener("click", () => {
   const popupWithForm = new PopupWithForm(
   '#profile-edit-modal',
   (formData) => {
+    
     userInfo.setUserInfo({
       name: formData.title,
       job: formData.description
     });
+    
     popupWithForm.close();
   });
+  
   popupWithForm.setEventListeners(); 
 
   profileEditButton.addEventListener('click', () => {
@@ -91,21 +95,6 @@ modalAddButton.addEventListener("click", () => {
 });
  
  
-
-//initial card render
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const cardElement = renderCard(item);
-      cardSection.addItem(cardElement);
-    },
-  },
-  ".cards__list"
-);
-cardSection.renderItems();
-
-
 const api = new Api ({
   baseUrl: "https://around-api.en.tripleten-services.com/v1/",
   headers:{
@@ -115,14 +104,35 @@ const api = new Api ({
   
 })
 
+//initial card render
+let cardSection;
+
+api.getCardList()
+
+  .then((cards) => {
+    console.log('API response:', cards);
+    console.log('First item:', cards[0]);
+
+     cardSection = new Section(
+      
+      {
+        items: cards,
+        renderer: (item) => renderCard(item),
+        
+      },
+      ".cards__list"
+    );
+
+    cardSection.renderItems();
+    
+  })
+  .catch(console.error);
+  
+  
 
 
-//Promise.all([api.getUserInfo(), api.getInitialCards()])
- // .then(([userData, cards]) => {
-//    userInfo.setUserInfo(userData);
- //   cardSection.renderItems(cards);
-//  })
- // .catch(console.error);
+
+
 
 
 
