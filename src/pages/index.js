@@ -41,6 +41,7 @@ function renderCard(cardData) {
 
 
 const popupWithImage = new PopupWithImage('#popup_type_image');
+popupWithImage.setEventListeners();
 
 function openImageModal(card) {
   popupWithImage.open(card);
@@ -70,6 +71,12 @@ modalAddButton.addEventListener("click", () => {
   addCardFormValidator.resetValidation();
   addCardPopup.open();
 });
+
+
+
+
+
+
 
   const popupWithForm = new PopupWithForm(
   '#profile-edit-modal',
@@ -110,8 +117,7 @@ let cardSection;
 api.getCardList()
 
   .then((cards) => {
-    console.log('API response:', cards);
-    console.log('First item:', cards[0]);
+    
 
      cardSection = new Section(
       
@@ -129,6 +135,8 @@ api.getCardList()
   .catch(console.error);
   
   
+
+
 
 
 
