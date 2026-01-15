@@ -1,11 +1,8 @@
 .modal__container_type_confirm {
    background-color: #fff;
   padding: 34px 36px;
-  border-radius: 10px;
-  position: relative;
-  max-width: 480px;
-  width: 100%;
-  min-height: 323px;
+  
+  min-height: 100px;
   box-sizing: border-box;
 }
 
