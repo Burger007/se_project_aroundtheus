@@ -5,6 +5,18 @@ export default class Card {
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteCard = handleDeleteCard;
+
+     this._id = data._id;
+  }
+
+ getId() {
+    return this._id;
+  }
+
+
+removeCard() {              
+    this._element.remove();
+    this._element = null;
   }
 
   _getTemplate() {
@@ -17,7 +29,6 @@ export default class Card {
   _setEventListeners() {
     this._likeButton.addEventListener("click", () => {
       this._handleLikeIcon();
-
       
     });
 
