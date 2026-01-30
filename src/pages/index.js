@@ -18,6 +18,8 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const cardAddPopup = document.querySelector("#add-popup");
 const modalAddButton = document.querySelector("#add-card-button");
 
+
+
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input",
 );
@@ -31,9 +33,18 @@ function renderCard(cardData) {
     "#card-template",
     openImageModal,
     handleDeleteCard,
+    changeLikeStatus,
   );
 
   return card.generateCard();
+}
+
+function changeLikeStatus(cardID, like, cardInstance) {
+  return api.changeLikeCardStatus(cardID, like).then((updatedCardData) => {
+    if (cardInstance) {
+      cardInstance.setLikes(updatedCardData.likes);
+    }
+  });
 }
 
 const popupWithImage = new PopupWithImage("#popup_type_image");
@@ -71,10 +82,11 @@ modalAddButton.addEventListener("click", () => {
 });
 
 const popupWithForm = new PopupWithForm("#profile-edit-modal", (formData) => {
-  api.setUserInfo({
-    name: formData.title,
-    about: formData.description,
-  })
+  api
+    .setUserInfo({
+      name: formData.title,
+      about: formData.description,
+    })
     .then((user) => {
       userInfo.setUserInfo({
         name: user.name,
@@ -88,7 +100,8 @@ const popupWithForm = new PopupWithForm("#profile-edit-modal", (formData) => {
 
 let cardToDelete;
 const deletePopup = new PopupWithConfirmation("#delete-confirm-modal", () => {
-  api.removeCard(cardToDelete.getId())
+  api
+    .removeCard(cardToDelete.getId())
     .then(() => {
       cardToDelete.removeCard();
       console.log("Removing card");
