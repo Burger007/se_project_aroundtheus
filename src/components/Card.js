@@ -23,15 +23,15 @@ export default class Card {
   }
 
   setLikes(isLiked) {
-    this._isLiked = isLiked;
-    this._likeButton.classList.toggle(
-      "card__like-button_active",
-      this.isLiked
-    );
-  }
+  this._isLiked = isLiked;
+  this._likeButton.classList.toggle(
+    "card__like-button_active",
+    this._isLiked  
+  );
+}
 
   isLiked() {
-    return this._likes.some((user) => user._id === this._userId);
+   return this._isLiked;
   }
 
   getId() {
@@ -83,7 +83,7 @@ export default class Card {
     this._titleElement.textContent = this.name;
 
     this._setEventListeners();
-
+    this.setLikes(this.isLiked());
     return this._element;
   }
 }

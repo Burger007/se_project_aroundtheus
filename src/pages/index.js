@@ -41,9 +41,7 @@ function renderCard(cardData, userId) {
 
 function changeLikeStatus(cardID, like, cardInstance) {
   return api.changeLikeCardStatus(cardID, like).then((updatedCardData) => {
-    if (cardInstance) {
-      cardInstance.setLikes(updatedCardData.likes);
-    }
+    cardInstance.setLikes(updatedCardData.isLiked); // ✅ boolean
   });
 }
 
@@ -162,13 +160,7 @@ api
   })
   .catch(console.error);
 
-function handleCardClick() {
-  // Empty function for now
-}
 
-function handleDeleteClick() {
-  // Empty function for now
-}
 
 //FormVadlidation Setpup
 const profileFormValidator = new FormValidator(
