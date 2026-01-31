@@ -40,8 +40,8 @@ function renderCard(cardData, userId) {
 }
 
 function changeLikeStatus(cardID, like, cardInstance) {
-  return api.changeLikeCardStatus(cardID, like).then((updatedCardData) => {
-    cardInstance.setLikes(updatedCardData.isLiked); // ✅ boolean
+   api.changeLikeCardStatus(cardID, like).then((updatedCardData) => {
+    cardInstance.setLikes(updatedCardData.isLiked);
   });
 }
 
