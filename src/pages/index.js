@@ -27,14 +27,14 @@ const profileDescriptionInput = document.querySelector(
 const profileForm = document.forms["profileForm"];
 const addCardFormElement = cardAddPopup.querySelector("#add-modal");
 
-function renderCard(cardData) {
+function renderCard(cardData, userId) {
   const card = new Card(
     cardData,
     "#card-template",
     openImageModal,
     handleDeleteCard,
     changeLikeStatus,
-    
+    userId,
   );
 
   return card.generateCard();
