@@ -26,7 +26,7 @@ const profileForm = document.forms["profileForm"];
 const addCardFormElement = cardAddPopup.querySelector("#add-modal");
 
 function renderCard(cardData, userId) {
-  console.log("Complete cardData:", cardData);
+ 
   const card = new Card(
     cardData,
     "#card-template",

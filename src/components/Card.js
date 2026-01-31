@@ -16,8 +16,7 @@ export default class Card {
     this._handleDeleteCard = handleDeleteCard;
     this.changeLikeStatus = changeLikeStatus;
 
-    this._likes = data.likes || [] 
-    
+    this._isLiked = data.isLiked;  
     this._id = data._id;
     this._userId = userId;
   }
