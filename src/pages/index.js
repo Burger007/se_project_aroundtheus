@@ -18,6 +18,8 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const cardAddPopup = document.querySelector("#add-popup");
 const modalAddButton = document.querySelector("#add-card-button");
 
+
+
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input",
 );
@@ -32,7 +34,7 @@ function renderCard(cardData) {
     openImageModal,
     handleDeleteCard,
     changeLikeStatus,
-    userId,
+    
   );
 
   return card.generateCard();
@@ -56,6 +58,28 @@ function openImageModal(card) {
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
+});
+
+const addCardPopup = new PopupWithForm("#add-popup", (formData) => {
+  const cardData = {
+    name: formData.title,
+    link: formData.image,
+  };
+
+  api
+    .addCard(cardData)
+    .then((card) => {
+      cardSection.addItem(renderCard(card));
+    })
+    .catch((error) => console.log(error));
+
+  addCardPopup.close();
+});
+addCardPopup.setEventListeners();
+
+modalAddButton.addEventListener("click", () => {
+  addCardFormValidator.resetValidation();
+  addCardPopup.open();
 });
 
 const popupWithForm = new PopupWithForm("#profile-edit-modal", (formData) => {
@@ -114,50 +138,25 @@ const api = new Api({
 
 // card render
 let cardSection;
-let userId;
 
 api
   .getAppInfo()
   .then(([cards, user]) => {
-    userId = user._id;
-
     cardSection = new Section(
       {
         items: cards,
-        renderer: (item) => renderCard(item),
+        renderer: (item) => renderCard(item, user._id),
       },
       ".cards__list",
     );
 
     cardSection.renderItems();
 
-    // Move the addCardPopup setup HERE:
-    const addCardPopup = new PopupWithForm("#add-popup", (formData) => {
-      const cardData = {
-        name: formData.title,
-        link: formData.image,
-      };
-
-      api
-        .addCard(cardData)
-        .then((card) => {
-          cardSection.addItem(renderCard(card));
-        })
-        .catch((error) => console.log(error));
-
-      addCardPopup.close();
-    });
-    addCardPopup.setEventListeners();
-
-    modalAddButton.addEventListener("click", () => {
-      addCardFormValidator.resetValidation();
-      addCardPopup.open();
-    });
-
     userInfo.setUserInfo({
       name: user.name,
       job: user.about,
     });
+    // TODO: care about the user data (add on the screen name, avatar, blah blah blah)
   })
   .catch(console.error);
 
