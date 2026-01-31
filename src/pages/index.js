@@ -34,6 +34,7 @@ function renderCard(cardData) {
     openImageModal,
     handleDeleteCard,
     changeLikeStatus,
+    
   );
 
   return card.generateCard();
@@ -144,7 +145,7 @@ api
     cardSection = new Section(
       {
         items: cards,
-        renderer: (item) => renderCard(item),
+        renderer: (item) => renderCard(item, user._id),
       },
       ".cards__list",
     );
@@ -158,7 +159,7 @@ api
     // TODO: care about the user data (add on the screen name, avatar, blah blah blah)
   })
   .catch(console.error);
-
+window.currentUserId = user._id;
 //FormVadlidation Setpup
 const profileFormValidator = new FormValidator(
   validationConfig,

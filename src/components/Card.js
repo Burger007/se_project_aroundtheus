@@ -5,6 +5,10 @@ export default class Card {
     handleImageClick,
     handleDeleteCard,
     changeLikeStatus,
+    handleCardClick,
+    handleDeleteClick,
+    handleLikeClick,
+    userId,
   ) {
     this.name = data.name;
     this._link = data.link;
@@ -15,20 +19,24 @@ export default class Card {
 
     this._likes = data.likes;
     this._id = data._id;
-    this._id = data.likes;
+    this._userId = userId;
+    this._handleLikeClick = handleLikeClick;
+    this._handleDeleteClick = handleDeleteClick;
+    this._handleCardClick = handleCardClick;
   }
 
- 
-setLikes(newLikesData) {
-this._likes = newLikesData;
-// Update the visual elements here
-this._likeButton.classList.toggle("card__like-button_active", this.isLiked());
-}
-
-isLiked() {
-    return this._likeButton.classList.contains("card__like-button_active");
+  setLikes(newLikesData) {
+    this._likes = newLikesData;
+    // Update the visual elements here
+    this._likeButton.classList.toggle(
+      "card__like-button_active",
+      this.isLiked(),
+    );
   }
 
+  isLiked() {
+    return this._likes.some((user) => user._id === this._userId);
+  }
 
   getId() {
     return this._id;
@@ -63,12 +71,9 @@ isLiked() {
     });
   }
 
- _handleLikeIcon() {
-this.changeLikeStatus(this._id, !this.isLiked(), this);
-}
-
-  
-
+  _handleLikeIcon() {
+    this.changeLikeStatus(this._id, !this.isLiked(), this);
+  }
 
   generateCard() {
     this._element = this._getTemplate();
