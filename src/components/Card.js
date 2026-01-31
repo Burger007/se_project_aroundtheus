@@ -5,11 +5,10 @@ export default class Card {
     handleImageClick,
     handleDeleteCard,
     changeLikeStatus,
-    handleCardClick,
-    handleDeleteClick,
-    handleLikeClick,
     userId,
   ) {
+    console.log(data);
+    console.log("Likes:", data.likes);
     this.name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
@@ -17,12 +16,10 @@ export default class Card {
     this._handleDeleteCard = handleDeleteCard;
     this.changeLikeStatus = changeLikeStatus;
 
-    this._likes = data.likes;
+    this._likes = data.likes || [];
+    console.log("this._likes after assignment:", this._likes);
     this._id = data._id;
     this._userId = userId;
-    this._handleLikeClick = handleLikeClick;
-    this._handleDeleteClick = handleDeleteClick;
-    this._handleCardClick = handleCardClick;
   }
 
   setLikes(newLikesData) {

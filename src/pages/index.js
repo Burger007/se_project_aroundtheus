@@ -18,8 +18,6 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const cardAddPopup = document.querySelector("#add-popup");
 const modalAddButton = document.querySelector("#add-card-button");
 
-
-
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input",
 );
@@ -69,7 +67,7 @@ const addCardPopup = new PopupWithForm("#add-popup", (formData) => {
   api
     .addCard(cardData)
     .then((card) => {
-      cardSection.addItem(renderCard(card));
+      cardSection.addItem(renderCard(card, user._id));
     })
     .catch((error) => console.log(error));
 
@@ -100,6 +98,7 @@ const popupWithForm = new PopupWithForm("#profile-edit-modal", (formData) => {
 });
 
 let cardToDelete;
+let user;
 const deletePopup = new PopupWithConfirmation("#delete-confirm-modal", () => {
   api
     .removeCard(cardToDelete.getId())
@@ -137,11 +136,13 @@ const api = new Api({
 });
 
 // card render
+
 let cardSection;
 
 api
   .getAppInfo()
-  .then(([cards, user]) => {
+  .then(([cards, userData]) => {
+    user = userData;
     cardSection = new Section(
       {
         items: cards,
@@ -159,6 +160,14 @@ api
     // TODO: care about the user data (add on the screen name, avatar, blah blah blah)
   })
   .catch(console.error);
+
+function handleCardClick() {
+  // Empty function for now
+}
+
+function handleDeleteClick() {
+  // Empty function for now
+}
 
 //FormVadlidation Setpup
 const profileFormValidator = new FormValidator(
