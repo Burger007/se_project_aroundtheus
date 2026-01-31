@@ -7,8 +7,8 @@ export default class Card {
     changeLikeStatus,
     userId,
   ) {
-    console.log(data);
-    console.log("Likes:", data.likes);
+
+  
     this.name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
@@ -16,18 +16,17 @@ export default class Card {
     this._handleDeleteCard = handleDeleteCard;
     this.changeLikeStatus = changeLikeStatus;
 
-    this._likes = data.likes || [];
-    console.log("this._likes after assignment:", this._likes);
+    this._likes = data.likes || [] 
+    
     this._id = data._id;
     this._userId = userId;
   }
 
-  setLikes(newLikesData) {
-    this._likes = newLikesData;
-    // Update the visual elements here
+  setLikes(isLiked) {
+    this._isLiked = isLiked;
     this._likeButton.classList.toggle(
       "card__like-button_active",
-      this.isLiked(),
+      this.isLiked
     );
   }
 
