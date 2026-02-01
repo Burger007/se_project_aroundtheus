@@ -1,0 +1,29 @@
+.profile__avatar-edit-button {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 26px;
+  height: 26px;
+  background-image: url("../images/edit-icon.svg");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.profile__avatar-edit-button:hover {
+  opacity: 0.6;
+}
+
+/* Avatar edit modal specific styling */
+.modal__container_type_avatar {
+  min-height: 272px;
+}
+
+.modal__form_type_avatar {
+  margin-top: 54px;
+}

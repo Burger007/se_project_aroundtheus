@@ -7,30 +7,27 @@ export default class Card {
     changeLikeStatus,
     userId,
   ) {
-
-  
     this.name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteCard = handleDeleteCard;
     this.changeLikeStatus = changeLikeStatus;
-
-    this._isLiked = data.isLiked;  
+    this._isLiked = data.isLiked;
     this._id = data._id;
     this._userId = userId;
   }
 
   setLikes(isLiked) {
-  this._isLiked = isLiked;
-  this._likeButton.classList.toggle(
-    "card__like-button_active",
-    this._isLiked  
-  );
-}
+    this._isLiked = isLiked;
+    this._likeButton.classList.toggle(
+      "card__like-button_active",
+      this._isLiked,
+    );
+  }
 
   isLiked() {
-   return this._isLiked;
+    return this._isLiked;
   }
 
   getId() {

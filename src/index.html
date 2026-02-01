@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -26,6 +26,22 @@
             alt="avatar logo"
             class="profile__image"
           />
+          <div class="modal" id="avatar-edit-modal">
+            <div class="modal__container">
+              <button class="modal__close" type="button"></button>
+              <h2 class="modal__heading">Change profile picture</h2>
+              <form class="modal__form" name="avatarForm" novalidate>
+                <input
+                  type="url"
+                  name="avatar"
+                  placeholder="Image URL"
+                  class="modal__input"
+                  required
+                />
+                <button class="modal__button" type="submit">Save</button>
+              </form>
+            </div>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques</h1>
             <button
