@@ -26,7 +26,6 @@ const profileForm = document.forms["profileForm"];
 const addCardFormElement = cardAddPopup.querySelector("#add-modal");
 
 function renderCard(cardData, userId) {
- 
   const card = new Card(
     cardData,
     "#card-template",
@@ -40,7 +39,7 @@ function renderCard(cardData, userId) {
 }
 
 function changeLikeStatus(cardID, like, cardInstance) {
-   api.changeLikeCardStatus(cardID, like).then((updatedCardData) => {
+  api.changeLikeCardStatus(cardID, like).then((updatedCardData) => {
     cardInstance.setLikes(updatedCardData.isLiked);
   });
 }
@@ -159,8 +158,6 @@ api
     // TODO: care about the user data (add on the screen name, avatar, blah blah blah)
   })
   .catch(console.error);
-
-
 
 //FormVadlidation Setpup
 const profileFormValidator = new FormValidator(
