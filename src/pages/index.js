@@ -60,7 +60,7 @@ const userInfo = new UserInfo({
 
 
 const addCardPopup = new PopupWithForm("#add-popup", (formData) => {
-  
+  addCardPopup.renderLoading(true);
   const cardData = {
     name: formData.title,
     link: formData.image,
@@ -70,10 +70,10 @@ const addCardPopup = new PopupWithForm("#add-popup", (formData) => {
     .addCard(cardData)
     .then((card) => {
       cardSection.addItem(renderCard(card, user._id));
+      addCardPopup.close();
     })
-    .catch((error) => console.log(error));
-
-  addCardPopup.close();
+    .catch((error) => console.log(error))
+    .finally(() => addCardPopup.renderLoading(false));
 });
 addCardPopup.setEventListeners();
 
@@ -84,7 +84,7 @@ modalAddButton.addEventListener("click", () => {
 
 
 const popupWithForm = new PopupWithForm("#profile-edit-modal", (formData) => {
-  
+   popupWithForm.renderLoading(true);
   api
     .setUserInfo({
       name: formData.title,
@@ -95,10 +95,10 @@ const popupWithForm = new PopupWithForm("#profile-edit-modal", (formData) => {
         name: user.name,
         job: user.about,
       });
-
       popupWithForm.close();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err))
+    .finally(() => popupWithForm.renderLoading(false));
 });
 
 let cardToDelete;
@@ -163,19 +163,21 @@ api
       
     });
     document.querySelector('.profile__image').src = user.avatar;
-    // TODO: care about the user data (add on the screen name, avatar, blah blah blah)
+    
   })
   .catch(console.error);
 
 
 
 const avatarEditPopup = new PopupWithForm('#avatar-edit-modal', (formData) => {
+  avatarEditPopup.renderLoading(true); // ADD THIS LINE
   api.setUserAvatar({ avatar: formData.avatar })
     .then((userData) => {
       document.querySelector('.profile__image').src = userData.avatar;
       avatarEditPopup.close();
     })
-    .catch((err) => console.error(err));
+    .catch((err) => console.error(err))
+    .finally(() => avatarEditPopup.renderLoading(false)); // ADD THIS LINE
 });
 avatarEditPopup.setEventListeners();
 
