@@ -21,28 +21,28 @@
 
       <main class="content">
         <section class="profile page__section">
-        <div class="profile__avatar-container">
-  <img
-    src="<%= require('./images/jacques-cousteau.jpg')%>"
-    alt="avatar logo"
-    class="profile__image"
-  />
-  <button class="profile__avatar-edit-button" type="button"></button>
-</div>
+          <div class="profile__avatar-container">
+            <img
+              src="<%= require('./images/jacques-cousteau.jpg')%>"
+              alt="avatar logo"
+              class="profile__image"
+            />
+            <button class="profile__avatar-edit-button" type="button"></button>
+          </div>
           <div class="modal" id="avatar-edit-modal">
             <div class="modal__container">
               <button class="modal__close" type="button"></button>
               <h2 class="modal__heading">Change profile picture</h2>
               <form class="modal__form" name="avatarForm" novalidate>
-                
                 <input
                   type="url"
                   name="avatar"
+                   id="avatar-input"
                   placeholder="Image URL"
                   class="modal__input"
                   required
                 />
-                
+               <span class="modal__error" id="avatar-input-error"></span>
                 <button class="modal__button" type="submit">Save</button>
               </form>
             </div>
@@ -213,6 +213,6 @@
       </div>
     </div>
 
-    <script src="./pages/index.js" type="module"></script>
+   
   </body>
 </html>

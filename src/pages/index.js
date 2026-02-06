@@ -41,7 +41,9 @@ function renderCard(cardData, userId) {
 function changeLikeStatus(cardID, like, cardInstance) {
   api.changeLikeCardStatus(cardID, like).then((updatedCardData) => {
     cardInstance.setLikes(updatedCardData.isLiked);
+    
   });
+  
 }
 
 const popupWithImage = new PopupWithImage("#popup_type_image");
@@ -56,7 +58,9 @@ const userInfo = new UserInfo({
   jobSelector: ".profile__description",
 });
 
+
 const addCardPopup = new PopupWithForm("#add-popup", (formData) => {
+  
   const cardData = {
     name: formData.title,
     link: formData.image,
@@ -78,7 +82,9 @@ modalAddButton.addEventListener("click", () => {
   addCardPopup.open();
 });
 
+
 const popupWithForm = new PopupWithForm("#profile-edit-modal", (formData) => {
+  
   api
     .setUserInfo({
       name: formData.title,
@@ -154,10 +160,28 @@ api
     userInfo.setUserInfo({
       name: user.name,
       job: user.about,
+      
     });
+    document.querySelector('.profile__image').src = user.avatar;
     // TODO: care about the user data (add on the screen name, avatar, blah blah blah)
   })
   .catch(console.error);
+
+
+
+const avatarEditPopup = new PopupWithForm('#avatar-edit-modal', (formData) => {
+  api.setUserAvatar({ avatar: formData.avatar })
+    .then((userData) => {
+      document.querySelector('.profile__image').src = userData.avatar;
+      avatarEditPopup.close();
+    })
+    .catch((err) => console.error(err));
+});
+avatarEditPopup.setEventListeners();
+
+
+
+
 
 //FormVadlidation Setpup
 const profileFormValidator = new FormValidator(
@@ -173,3 +197,15 @@ const addCardFormValidator = new FormValidator(
   selectors,
 );
 addCardFormValidator.enableValidation();
+
+const avatarFormValidator = new FormValidator(
+  validationConfig,
+  document.forms["avatarForm"],
+  selectors,
+);
+avatarFormValidator.enableValidation();
+
+document.querySelector('.profile__avatar-edit-button').addEventListener('click', () => {
+  avatarFormValidator.resetValidation();
+  avatarEditPopup.open();
+});
