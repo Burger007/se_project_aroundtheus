@@ -39,11 +39,12 @@ function renderCard(cardData, userId) {
 }
 
 function changeLikeStatus(cardID, like, cardInstance) {
-  api.changeLikeCardStatus(cardID, like).then((updatedCardData) => {
-    cardInstance.setLikes(updatedCardData.isLiked);
-    
-  });
-  
+  api
+    .changeLikeCardStatus(cardID, like)
+    .then((updatedCardData) => {
+      cardInstance.setLikes(updatedCardData.isLiked);
+    })
+    .catch((err) => console.error(err));
 }
 
 const popupWithImage = new PopupWithImage("#popup_type_image");
@@ -56,8 +57,8 @@ function openImageModal(card) {
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
+  avatarSelector: ".profile__image"
 });
-
 
 const addCardPopup = new PopupWithForm("#add-popup", (formData) => {
   addCardPopup.renderLoading(true);
@@ -82,9 +83,8 @@ modalAddButton.addEventListener("click", () => {
   addCardPopup.open();
 });
 
-
 const popupWithForm = new PopupWithForm("#profile-edit-modal", (formData) => {
-   popupWithForm.renderLoading(true);
+  popupWithForm.renderLoading(true);
   api
     .setUserInfo({
       name: formData.title,
@@ -104,6 +104,7 @@ const popupWithForm = new PopupWithForm("#profile-edit-modal", (formData) => {
 let cardToDelete;
 let user;
 const deletePopup = new PopupWithConfirmation("#delete-confirm-modal", () => {
+  
   api
     .removeCard(cardToDelete.getId())
     .then(() => {
@@ -111,7 +112,8 @@ const deletePopup = new PopupWithConfirmation("#delete-confirm-modal", () => {
       console.log("Removing card");
       deletePopup.close();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err))
+    
 });
 deletePopup.setEventListeners();
 
@@ -160,30 +162,28 @@ api
     userInfo.setUserInfo({
       name: user.name,
       job: user.about,
-      
+      avatar: user.avatar
     });
-    document.querySelector('.profile__image').src = user.avatar;
-    
+   
   })
-  .catch(console.error);
+ .catch((err) => console.error(err));
 
-
-
-const avatarEditPopup = new PopupWithForm('#avatar-edit-modal', (formData) => {
-  avatarEditPopup.renderLoading(true); // ADD THIS LINE
-  api.setUserAvatar({ avatar: formData.avatar })
+const avatarEditPopup = new PopupWithForm("#avatar-edit-modal", (formData) => {
+  avatarEditPopup.renderLoading(true);
+  api
+    .setUserAvatar({ avatar: formData.avatar })
     .then((userData) => {
-      document.querySelector('.profile__image').src = userData.avatar;
+    userInfo.setUserInfo({
+  name: userData.name,
+  job: userData.about,
+  avatar: userData.avatar
+});
       avatarEditPopup.close();
     })
     .catch((err) => console.error(err))
-    .finally(() => avatarEditPopup.renderLoading(false)); // ADD THIS LINE
+    .finally(() => avatarEditPopup.renderLoading(false));
 });
 avatarEditPopup.setEventListeners();
-
-
-
-
 
 //FormVadlidation Setpup
 const profileFormValidator = new FormValidator(
@@ -207,7 +207,9 @@ const avatarFormValidator = new FormValidator(
 );
 avatarFormValidator.enableValidation();
 
-document.querySelector('.profile__avatar-edit-button').addEventListener('click', () => {
-  avatarFormValidator.resetValidation();
-  avatarEditPopup.open();
-});
+document
+  .querySelector(".profile__avatar-edit-button")
+  .addEventListener("click", () => {
+    avatarFormValidator.resetValidation();
+    avatarEditPopup.open();
+  });
